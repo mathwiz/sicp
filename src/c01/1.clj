@@ -1,1 +1,3 @@
-(println 10)
+(def p println)
+
+(p 10)
