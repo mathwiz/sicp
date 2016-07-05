@@ -1,4 +1,2 @@
-﻿module sicp.c01
-
-printfn "%s" "10";;
+﻿printfn "%i" 10;;
 
