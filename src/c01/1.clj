@@ -1,3 +1,4 @@
+;; hack to show the evaluations in this file as separate lines in console
 (def p println)
 
 (p 10)
@@ -8,7 +9,8 @@
 
 (p (/ 6 2))
 
-(p (+ (* 2 4) (- 4 6)))
+(p (+ (* 2 4) 
+      (- 4 6)))
 
 (def a 3)
 
@@ -18,7 +20,29 @@
 
 (p (= a b))
 
-(p (if (and (> b a) (< b (* a b)))
-     b
-     a)
-  )
+(p 
+ (if (and (> b a) 
+          (< b (* a b))) 
+   b
+   a))
+
+(p 
+ (cond (= a 4) 
+       6
+       (= b 4) 
+       (+ 6 7 a) 
+       :else 25))
+
+(p (+ 2 
+      (if (> b a) 
+        b
+        a)))
+
+(p
+ (*
+  (cond (> a b) 
+        a
+        (< a b)
+        b 
+        :else -1)
+  (+ a 1)))
