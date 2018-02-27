@@ -20,14 +20,11 @@ z.push(a == b);
 
 z.push((b > a) && (b < (a * b)) ? b : a);
 
-z.push((function () {
-    if (a == 4) return 6; else if (b == 4) return 6 + 7 + a; else return 25;
-})());
+z.push(a == 4 ? 6 : b == 4 ? 6 + 7 + a : 25);
 
 z.push((b > a ? b : a) + 2);
 
-z.push((function () {
-        if (a > b) return a; else if (a < b) return b; else return -1;
-    })() * (a + 1));
+z.push((a > b ? a : a < b ? b : -1) * (a + 1));
 
 z.forEach(function (it) { print(it) });
+
