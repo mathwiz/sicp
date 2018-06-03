@@ -2,13 +2,13 @@ use feature qw(say);
 
 say 10;
 
-say 5 + 3 + 4;
+say (5 + 3 + 4);
 
-say 9-1;
+say (9-1);
 
-say 6/2;
+say (6/2);
 
-say (2 * 4) + (4 - 6);
+say ((2 * 4) + (4 - 6));
 
 $a = 3;
 
