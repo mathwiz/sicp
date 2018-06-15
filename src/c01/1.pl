@@ -1,4 +1,6 @@
 use feature qw(say);
+use strict;
+use warnings;
 
 say 10;
 
