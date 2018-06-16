@@ -11,8 +11,3 @@ def larger_sq(x, y, z):
 def sum_sq(x, y):
     return x*x + y*y
 
-
-print(larger_sq(1,2,3))
-print(larger_sq(4,2,3))
-print(larger_sq(4,5,3))
-print(larger_sq(4,1,3))
