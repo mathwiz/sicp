@@ -1,3 +1,7 @@
+def sum_sq (x: Int, y: Int): Int = {
+  x * x + y * y
+}
+
 def larger_sq (x: Int, y: Int, z: Int): Int = {
   if (x < y && x < z) {
     sum_sq(y,z)
@@ -6,10 +10,6 @@ def larger_sq (x: Int, y: Int, z: Int): Int = {
   } else {
     sum_sq(x,y)
   }
-}
-
-def sum_sq (x: Int, y: Int): Int = {
-  x * x + y * y
 }
 
 val shouldEqual_13 = larger_sq(1,2,3) == 13
