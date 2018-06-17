@@ -1,4 +1,4 @@
-:load functions.sc
+:load functions.scala
 
 def larger_sq (x: Int, y: Int, z: Int): Int = {
   if (x < y && x < z) {
