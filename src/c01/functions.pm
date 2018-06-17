@@ -2,15 +2,12 @@ package functions;
 use strict;
 use warnings FATAL => 'all';
 use Exporter qw(import);
+use List::Util qw(reduce);
 
-our @EXPORT_OK = qw(sum_sq);
+our @EXPORT_OK = qw(sum_squares);
 
-sub sum_sq {
-    my $sum = 0;
-    foreach my $x (@_) {
-        $sum += ($x * $x);
-    }
-    $sum;
+sub sum_squares {
+    reduce { $a + $b**2 } 0, @_;
 }
 
 1;
