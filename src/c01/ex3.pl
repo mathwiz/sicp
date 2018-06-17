@@ -26,4 +26,4 @@ sub sum_sq {
 say(larger_sq(1,2,3));
 say(larger_sq(4,2,3));
 say(larger_sq(4,5,3));
-say(larger_sq(4,1,3));
+say(larger_sq(4,2,1));
