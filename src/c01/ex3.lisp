@@ -1,19 +1,19 @@
-(defun larger-sq (x y z) 
+(load "functions.lisp")
+
+(defun larger-sq (x y z)
     (cond ((and 
             (<= x z) 
             (<= x y)) 
-           (+ (* z z) 
-              (* y y))) 
+           (sum-squares (list y z)))
           ((and 
             (<= y z) 
             (<= y x)) 
-           (+ (* x x) 
-              (* z z))) 
+           (sum-squares (list x z))) 
           ((and 
             (<= z x) 
             (<= z y)) 
-           (+ (* x x) 
-              (* y y)))))
+           (sum-squares (list x y)))))
+
 
 (= 25 (larger-sq 2 3 4))
 (= 25 (larger-sq 2 4 3))
