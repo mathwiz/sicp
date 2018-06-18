@@ -11,9 +11,6 @@ def larger_sq(x, y, z)
   end
 end
 
-def sum_sq(x, y)
-  x*x + y*y
-end
 
 p sum_squares([1,2,3])
 p larger_sq(2,3,4)
