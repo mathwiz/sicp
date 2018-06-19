@@ -11,5 +11,7 @@
     <orderEntry type="jdk" jdkName="jruby-9.2.0.0-p0" jdkType="JRUBY_SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Python 3.5.1 (C:\Users\Yohan\Anaconda3\python.exe) interpreter library" level="application" />
+    <orderEntry type="library" name="R User Library" level="project" />
+    <orderEntry type="library" name="R Skeletons" level="application" />
   </component>
 </module>
