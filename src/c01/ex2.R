@@ -2,7 +2,7 @@ r <- (5 + 4 + (2 - (3 - (6 + (4 / 5))))) / (3 * (6 - 2) * (2 - 7))
 
 f <- fractions(r)
 
-test_that("Test rational", {
+test_that("Rational is reduced fraction", {
   expect_equal(f, fractions(-37/150))
 })
 
