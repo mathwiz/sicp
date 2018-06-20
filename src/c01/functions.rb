@@ -1,6 +1,7 @@
 # Until we are able to load test/unit
 class TempTestCase
   def initialize(name)
+    @name = name
   end
 
   def assert_equal(expected, actual)
