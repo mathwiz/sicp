@@ -22,5 +22,5 @@
 (check-expect (larger-sq 4 3 2) 25)
 (check-expect (larger-sq 4 2 3) 25)
 (check-expect (larger-sq 5 3 4) 41)
-(check-expect (larger-sq 2 2 2) 4)
+(check-expect (larger-sq 2 2 2) 8)
 
