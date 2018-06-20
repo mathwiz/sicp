@@ -15,12 +15,12 @@
            (sum-squares (list x y)))))
 
 
-(= 25 (larger-sq 2 3 4))
-(= 25 (larger-sq 2 4 3))
-(= 25 (larger-sq 3 2 4))
-(= 25 (larger-sq 3 4 2))
-(= 25 (larger-sq 4 3 2))
-(= 25 (larger-sq 4 2 3))
-(= 41 (larger-sq 5 3 4))
-(= 8 (larger-sq 2 2 2))
+(check-expect (larger-sq 2 3 4) 25)
+(check-expect (larger-sq 2 4 3) 25)
+(check-expect (larger-sq 3 2 4) 25)
+(check-expect (larger-sq 3 4 2) 25)
+(check-expect (larger-sq 4 3 2) 25)
+(check-expect (larger-sq 4 2 3) 25)
+(check-expect (larger-sq 5 3 4) 41)
+(check-expect (larger-sq 2 2 2) 4)
 
