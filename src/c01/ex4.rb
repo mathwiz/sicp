@@ -2,9 +2,7 @@ require 'test/unit'
 
 
 def a_plus_abs_b(a, b)
-  plus = lambda {|x,y| x + y}
-  minus = lambda {|x,y| x - y}
-  (b > 0 ? plus : minus).call(a,b)
+  (b > 0 ? lambda {a + b} : lambda {a - b}).call()
 end
 
 class Ex4Test < Test::Unit::TestCase
