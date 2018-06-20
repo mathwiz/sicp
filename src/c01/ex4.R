@@ -1,0 +1,14 @@
+a_plus_abs_b <- function(a,b) {
+  (if (b>0) (function() a+b) else (function() a-b)) ()
+}
+
+# Run in console
+# > library(testthat)
+# > test_file('R/sicp1-4.R')
+
+test_that("a_plus_abs_b returns correct number", {
+  expect_equal(a_plus_abs_b(1,2), 3)
+  expect_equal(a_plus_abs_b(1,-2), 3)
+  expect_equal(a_plus_abs_b(-1,2), 1)
+  expect_equal(a_plus_abs_b(-1,-2), 1)
+})
