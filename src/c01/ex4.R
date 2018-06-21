@@ -1,5 +1,5 @@
 a_plus_abs_b <- function(a,b) {
-  (if (b>0) (function() a+b) else (function() a-b)) ()
+  eval(call(ifelse(b>0,"+","-"), a, b))
 }
 
 # Run in console
