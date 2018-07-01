@@ -7,4 +7,5 @@
       0
       y))
 
-(test 0 (p))
+;; this will blow up
+;;(test 0 (p))
