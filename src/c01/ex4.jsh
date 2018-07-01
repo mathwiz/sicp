@@ -2,7 +2,7 @@
         int binary(int left, int right);
     }
 
-        int a_plus_abs_b(Integer a, Integer b) {
+        int a_plus_abs_b(int a, int b) {
             Operator op = b > 0 ? (x, y) -> x + y : (x, y) -> x - y;
             return op.binary(a, b);
         }
