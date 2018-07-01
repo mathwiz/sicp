@@ -3,6 +3,6 @@
                 String.format(
                         "%s: %s",
                         expected.toString().equals(exp.toString()) ? "passed" : "failed",
-                        expected)
+                        expected.toString())
         );
     }
