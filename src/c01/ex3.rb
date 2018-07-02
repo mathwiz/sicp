@@ -1,5 +1,5 @@
 require 'test/unit'
-require_relative 'functions'
+require_relative '../../ruby/functions'
 
 def larger_sq(x, y, z)
   case [x,y,z].min
