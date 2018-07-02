@@ -9,3 +9,6 @@
 *.lib
 *.fas
 *.bak
+
+.RData
+.Rhistory
