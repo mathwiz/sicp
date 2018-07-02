@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/clojure/clojure.iml" filepath="$PROJECT_DIR$/clojure/clojure.iml" />
-      <module fileurl="file://$PROJECT_DIR$/src/generic.iml" filepath="$PROJECT_DIR$/src/generic.iml" />
       <module fileurl="file://$PROJECT_DIR$/java/java.iml" filepath="$PROJECT_DIR$/java/java.iml" />
       <module fileurl="file://$PROJECT_DIR$/javascript/javascript.iml" filepath="$PROJECT_DIR$/javascript/javascript.iml" />
       <module fileurl="file://$PROJECT_DIR$/lisp/lisp.iml" filepath="$PROJECT_DIR$/lisp/lisp.iml" />
