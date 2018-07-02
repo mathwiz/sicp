@@ -13,7 +13,5 @@
     <orderEntry type="library" name="Python 3.5.1 (C:\Users\Yohan\Anaconda3\python.exe) interpreter library" level="application" />
     <orderEntry type="library" name="R User Library" level="project" />
     <orderEntry type="library" name="R Skeletons" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="power_assert (v1.1.1, ruby-2.5.1-p57) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="test-unit (v3.2.7, ruby-2.5.1-p57) [gem]" level="application" />
   </component>
 </module>
