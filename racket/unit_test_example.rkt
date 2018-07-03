@@ -1,5 +1,4 @@
 #lang racket
-(require rackunit)
 (require rackunit rackunit/gui)
 
 (check-eq? 1.0 1 "fixnums not eq?")
