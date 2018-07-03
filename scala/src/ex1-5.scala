@@ -6,3 +6,6 @@ def test (x: Int, y: Int) : Int = {
 
 // Try this
 // test (0, p) => [no response]
+// Plus the definition gives this warning:
+// ex1-5.scala:11: warning: method p does nothing other than call itself recursively
+// def p : Int = { p }
