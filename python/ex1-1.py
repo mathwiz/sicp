@@ -16,10 +16,10 @@ print(a+b+a*b)
 
 print(a == b)
 
-print(b if b>a and b<a*b else a)
+print(b if (b > a and b < a*b) else a)
 
-print(6 if a==4 else 6+7+a if b==4 else 25)
+print(6 if a == 4 else 6+7+a if b == 4 else 25)
 
-print(2 + (b if b>a else a))
+print(2 + (b if b > a else a))
 
-print((a if a>b else b if a<b else -1) * (a+1))
+print((a if a > b else b if a < b else -1) * (a+1))
