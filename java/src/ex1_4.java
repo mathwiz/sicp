@@ -24,5 +24,5 @@ public class ex1_4 {
 
 /*
  * Run in shell:
- * new ex1_4.a_plus_abs_b(1,-2).intValue() == 3 => true
+ * new ex1_4.a_plus_abs_b(1,-2).get() == 3 => true
  */
