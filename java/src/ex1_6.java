@@ -11,7 +11,7 @@ public class ex1_6 {
         }
 
         boolean is_good_enough(double guess, double x) {
-            return Math.abs(square(guess) - x) < 0.001;
+            return Math.abs(square(guess) - x) < 0.000001;
         }
 
         double square(double x) {
