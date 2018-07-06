@@ -39,5 +39,5 @@ test_that("small failed", {
 })
 
 test_that("smaller failed", {
-    expect_equal(bad_sqrt(0.0002), sqrt(0.0002), tolerance=delta)
+    expect_equal(my_sqrt(0.0002), sqrt(0.0002), tolerance=delta)
 })
