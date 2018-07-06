@@ -7,6 +7,8 @@ use List::Util qw(min);
 use File::Basename qw(dirname);
 use Cwd  qw(abs_path);
 use lib dirname abs_path $0;
+use FindBin;
+use lib "$FindBin::Bin/..";
 use functions qw(sum_squares);
 
 sub larger_sq {
