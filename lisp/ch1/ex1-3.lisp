@@ -1,4 +1,4 @@
-(load "functions.lisp")
+(load "../functions.lisp")
 
 (defun larger-sq (x y z)
     (cond ((and 

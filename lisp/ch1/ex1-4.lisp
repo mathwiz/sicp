@@ -1,4 +1,4 @@
-(load "functions.lisp")
+(load "../functions.lisp")
 
 (defun a-plus-abs-b (a b)
   (funcall (if (> b 0) #'+ #'-) a b))
