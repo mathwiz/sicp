@@ -1,18 +1,18 @@
-(defun sqrt-iter (guess x) 
+(defn sqrt-iter (guess x) 
   (if (good-enough? guess x) guess (sqrt-iter (improve guess x) x)))
 
-(defun improve (guess x) 
+(defn improve (guess x) 
   (average guess (/ x guess)))
 
-(defun average (x y) 
+(defn average (x y) 
   (/ (+ x y) 2))
 
-(defun good-enough?  (guess x)
+(defn good-enough?  (guess x)
   (< (abs (- (square guess) x)) (/ guess 100000)))
 
-(defun my-sqrt (x)
+(defn my-sqrt (x)
   (sqrt-iter 1.0 x))
 
-(defun square (x)
+(defn square (x)
   (* x x))
 
