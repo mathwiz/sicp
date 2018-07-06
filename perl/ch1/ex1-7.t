@@ -2,6 +2,8 @@
 use strict;
 use warnings;
 use Test::More;
+use FindBin;
+use lib "$FindBin::Bin/..";
 use functions qw(delta_compare);
 
 sub square {
