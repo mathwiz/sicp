@@ -1,6 +1,6 @@
 #lang racket/load
 (require rackunit)
-(require "functions.rkt")
+(require "../functions.rkt")
 
 (define (larger-sq x y z)
   (cond ((and 
