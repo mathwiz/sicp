@@ -1,3 +1,5 @@
+package ch1;
+
 import java.util.function.Supplier;
 
 public class ex1_4 {

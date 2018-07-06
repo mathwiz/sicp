@@ -1,3 +1,5 @@
+package ch1;
+
 import java.util.function.Function;
 
 public class ex1_6 {
