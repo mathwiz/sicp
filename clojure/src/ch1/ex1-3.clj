@@ -1,4 +1,4 @@
-(load-file "functions.clj")
+(load-file "../functions.clj")
 
 (defn larger-sq [x y z]
   (int
