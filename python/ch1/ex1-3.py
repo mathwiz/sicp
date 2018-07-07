@@ -1,4 +1,6 @@
 import nose
+import sys
+sys.path.insert(0, '..')
 from functions import sum_squares
 
 
