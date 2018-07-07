@@ -20,5 +20,5 @@ object ex1_7 extends App {
   val delta = 0.0001
   assert (Math.abs (cbrt.cube(cbrt.apply(27)) - 27) < delta)
   assert (Math.abs (cbrt.cube(cbrt.apply(0.00027)) - 0.00027) < delta)
-  println("done testing ex1_8")
+  println ("done testing ex1_8")
 }
