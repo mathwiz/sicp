@@ -2,7 +2,7 @@ package ch1;
 
 import java.util.function.Function;
 
-public class ex1_8 {
+public class ex108 {
     static class CubeRootFunction {
         static final double factor = 100000.0;
 
