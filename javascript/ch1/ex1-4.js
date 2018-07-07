@@ -1,4 +1,4 @@
-load('functions.js');
+load('../functions.js');
 
 function a_plus_abs_b(a, b) {
     return ( b > 0 ? function() { return a + b } : function() { return a - b } ).call();

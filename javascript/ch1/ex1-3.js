@@ -1,4 +1,4 @@
-load('functions.js');
+load('../functions.js');
 
 larger_sq = function(x, y, z) {
     if (x <= y && x <= z) return sum_squares([y,z]);

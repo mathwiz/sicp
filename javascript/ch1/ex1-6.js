@@ -1,4 +1,4 @@
-load('functions.js');
+load('../functions.js');
 
 sq = function (x) {
     return x * x;
