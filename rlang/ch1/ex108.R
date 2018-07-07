@@ -24,7 +24,7 @@ my_cbrt <- function(x) {
 
 
 # Run in console
-# > library(testthat)
+library(testthat)
 # > test_file('ch1/ex108.R')
 
 delta = 0.0001
