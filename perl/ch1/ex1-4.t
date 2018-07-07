@@ -9,16 +9,9 @@ sub a_plus_abs_b_anon {
     ($b > 0 ? sub { $a + $b } : sub { $a - $b })->();
 }
 
-sub func_add { 
-    (shift @_) + (shift @_)
-}
-
-sub func_sub { 
-    (shift @_) - (shift @_)
-}
-
-
 sub a_plus_abs_b_named {
+    sub func_add { (shift @_) + (shift @_) }
+    sub func_sub { (shift @_) - (shift @_) }
     my ($a, $b) = @_;
     ($b > 0 ? \&func_add : \&func_sub)->($a, $b);
 }
