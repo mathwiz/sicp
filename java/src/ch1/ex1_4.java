@@ -33,6 +33,11 @@ public class ex1_4 {
         }
     }
 
+    static int a_plus_abs_b_function(int a, int b) {
+        return Arrays.asList(b).stream()
+                .reduce(a, b > 0 ? ex1_4::add : ex1_4::sub);
+    }
+
     public static void main(String[] args) {
         System.out.println("Anonymous lambda");
         System.out.println(new a_plus_abs_b(1, 2).get());
@@ -44,6 +49,11 @@ public class ex1_4 {
         System.out.println(new a_plus_abs_b_function_literal().apply(1, -2));
         System.out.println(new a_plus_abs_b_function_literal().apply(-1, 2));
         System.out.println(new a_plus_abs_b_function_literal().apply(-1, -2));
+        System.out.println("Function literal from standard function");
+        System.out.println(a_plus_abs_b_function(1, 2));
+        System.out.println(a_plus_abs_b_function(1, -2));
+        System.out.println(a_plus_abs_b_function(-1, 2));
+        System.out.println(a_plus_abs_b_function(-1, -2));
     }
 }
 
