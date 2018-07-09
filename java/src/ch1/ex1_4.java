@@ -13,14 +13,14 @@ public class ex1_4 {
         return x - y;
     }
 
-    static class a_plus_abs_b implements Supplier<Integer> {
+    static class a_plus_abs_b {
         Supplier<Integer> op;
 
         a_plus_abs_b(int a, int b) {
             op = b > 0 ? () -> a + b : () -> a - b;
         }
 
-        public Integer get() {
+        public Integer apply() {
             return op.get();
         }
     }
@@ -39,17 +39,17 @@ public class ex1_4 {
     }
 
     public static void main(String[] args) {
-        System.out.println("Anonymous lambda");
-        System.out.println(new a_plus_abs_b(1, 2).get());
-        System.out.println(new a_plus_abs_b(1, -2).get());
-        System.out.println(new a_plus_abs_b(-1, 2).get());
-        System.out.println(new a_plus_abs_b(-1, -2).get());
-        System.out.println("Function literal");
+        System.out.println("Class representing function using lambdas");
+        System.out.println(new a_plus_abs_b(1, 2).apply());
+        System.out.println(new a_plus_abs_b(1, -2).apply());
+        System.out.println(new a_plus_abs_b(-1, 2).apply());
+        System.out.println(new a_plus_abs_b(-1, -2).apply());
+        System.out.println("Class representing function using function literal");
         System.out.println(new a_plus_abs_b_function_literal().apply(1, 2));
         System.out.println(new a_plus_abs_b_function_literal().apply(1, -2));
         System.out.println(new a_plus_abs_b_function_literal().apply(-1, 2));
         System.out.println(new a_plus_abs_b_function_literal().apply(-1, -2));
-        System.out.println("Function literal from standard function");
+        System.out.println("Standard function using function literal");
         System.out.println(a_plus_abs_b_function(1, 2));
         System.out.println(a_plus_abs_b_function(1, -2));
         System.out.println(a_plus_abs_b_function(-1, 2));
@@ -59,5 +59,5 @@ public class ex1_4 {
 
 /*
  * Run in shell:
- * new ex1_4.a_plus_abs_b(1,-2).get() == 3 => true
+ * new ex1_4.a_plus_abs_b(1,-2).apply() == 3 => true
  */
