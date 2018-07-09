@@ -9,9 +9,8 @@ object ex108 {
 
   def is_good_enough (guess: Double, x: Double) : Boolean = Math.abs (cube(guess) - x) < (guess / factor)
 
-  def cbrt_iter (guess: Double, x: Double) : Double = {
+  def cbrt_iter (guess: Double, x: Double) : Double =
     if (is_good_enough(guess, x)) guess else cbrt_iter(improve(guess, x), x)
-  }
 
   def cbrt (x: Double) : Double = cbrt_iter(1.0, x)
 }
