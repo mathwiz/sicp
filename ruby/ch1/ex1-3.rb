@@ -22,6 +22,9 @@ class Test1 < Test::Unit::TestCase
     assert_equal(25, larger_sq(2,3,4))
     assert_equal(41, larger_sq(5,3,4))
     assert_equal(2, larger_sq(1,1,1))
+    assert_equal(5, larger_sq(2,1,1))
+    assert_equal(5, larger_sq(1,2,1))
+    assert_equal(5, larger_sq(1,1,2))
   end
 end
 
