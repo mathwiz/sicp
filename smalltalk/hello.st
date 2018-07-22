@@ -1,1 +1,1 @@
-| a |    a := 42.  a printString
+Transcript cr; show: 'Hello World!'
