@@ -12,3 +12,8 @@
 
 .RData
 .Rhistory
+
+*.beam
+
+*.dep
+*.zo
