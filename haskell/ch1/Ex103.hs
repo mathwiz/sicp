@@ -1,3 +1,5 @@
+-- :load "Ex103.hs"
+
 module Ex103 where
 
 larger_sq x y z =
