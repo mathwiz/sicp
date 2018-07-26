@@ -20,8 +20,13 @@ def a_plus_abs_b (a: Int, b: Int): Int = {
   a_plus_abs_b_operator2 (a, b)
 }
 
-assert (a_plus_abs_b(1, 2) == 3)
-assert (a_plus_abs_b(1, -2) == 3)
-assert (a_plus_abs_b(-1, 2) == 1)
-assert (a_plus_abs_b(-1, -2) == 1)
-println("done")
+
+// Load with > :load ex1-4.scala
+// Run with > test_ex104()
+def test_ex104 () = {
+  assert (a_plus_abs_b(1, 2) == 3)
+  assert (a_plus_abs_b(1, -2) == 3)
+  assert (a_plus_abs_b(-1, 2) == 1)
+  assert (a_plus_abs_b(-1, -2) == 1)
+  "done"
+}
