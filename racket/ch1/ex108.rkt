@@ -1,8 +1,7 @@
-
 #lang racket
 (require rackunit)
 
-; load with (require "ex1-7.rkt")
+; load with (require "ex108.rkt")
 (provide my-cbrt)
 
 (define (cbrt-iter guess x) 
