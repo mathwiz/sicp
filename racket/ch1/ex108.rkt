@@ -23,8 +23,10 @@
   (* x x x))
 
 
+;; Run from shell$ racket ex108.rkt
 (define delta 0.0001)
 (check-= (cube (my-cbrt 27)) 27 delta)
 (check-= (cube (my-cbrt 0.000027)) 0.000027 delta)
 (check-= (cube (my-cbrt 2)) 2 delta)
+;; Failing test: (check-= (my-cbrt 3) 1.44 delta)
 (write "done")

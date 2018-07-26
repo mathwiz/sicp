@@ -2,6 +2,8 @@
 %%% @author Yohan
 %%% @copyright (C) 2018, <COMPANY>
 %%% @doc
+%%% compile with > c("ex103.erl").
+%%% load with > l(ex103).
 %%% run with > ex103:main().
 %%% @end
 %%% Created : 25. Jul 2018 1:55 PM
