@@ -1,3 +1,5 @@
+# Include with> include("c:/Users/Yohan/IdeaProjects/sicp/julia/ch1/ex101.jl")
+
 10
 
 5 + 3 + 4
