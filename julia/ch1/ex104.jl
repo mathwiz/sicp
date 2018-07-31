@@ -5,9 +5,7 @@ ex104:
 - Date: 2018-07-31
 =#
 
-function a_plus_abs_b_lambda(a, b)
-   ( b > 0 ? (x->a+x) : (x->a-x) )(b)
-end
+a_plus_abs_b_lambda(a, b) = ( b > 0 ? (x->a+x) : (x->a-x) )(b)
 
 function a_plus_abs_b_operator(a, b)
    (if b > 0
