@@ -40,6 +40,7 @@ public class ex108 {
 
     public static void main(String[] args) {
         final cbrt f = new cbrt();
+        System.out.println(f.apply(64.0) + " vs. cubed\n" + f.cube(f.apply(64.0)));
         System.out.println(f.apply(27.0) + " vs. cubed\n" + f.cube(f.apply(27.0)));
         System.out.println(f.apply(0.027) + " vs. cubed\n" + f.cube(f.apply(0.027)));
     }
