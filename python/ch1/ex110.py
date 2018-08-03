@@ -1,5 +1,6 @@
 import unittest
 
+
 def A(x, y):
     if y == 0:
         return 0
@@ -14,15 +15,17 @@ def A(x, y):
 def f(n):
     return A(0, n)
 
+
 def g(n):
     return A(1, n)
+
 
 def h(n):
     return A(2, n)
 
+
 def k(n):
     return 5 * n * n
-
 
 
 class MyTest(unittest.TestCase):
