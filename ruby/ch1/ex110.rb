@@ -34,6 +34,11 @@ class MyTest < Test::Unit::TestCase
   include Ex110
 
   def test_1
+    assert_equal(0, a(0, 0))
+    assert_equal(0, a(1, 0))
+    assert_equal(2, a(0, 1))
+    assert_equal(2, a(1, 1))
+    assert_equal(4, a(0, 2))
     assert_equal(1024, a(1, 10))
     assert_equal(65536, a(2, 4))
     assert_equal(65536, a(3, 3))
