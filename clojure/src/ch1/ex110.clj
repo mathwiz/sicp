@@ -14,6 +14,11 @@
 (require
  'clojure.test)
 
+(clojure.test/is (= (A 0 0) 0))
+(clojure.test/is (= (A 1 0) 0))
+(clojure.test/is (= (A 0 1) 2))
+(clojure.test/is (= (A 1 1) 2))
+(clojure.test/is (= (A 0 2) 4))
 (clojure.test/is (= (A 1 10) 1024))
 (clojure.test/is (= (A 2 4) 65536))
 (clojure.test/is (= (A 3 3) 65536))
