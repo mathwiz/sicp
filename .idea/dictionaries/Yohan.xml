@@ -3487,6 +3487,7 @@
       <w>ie_get_proxy_for_url</w>
       <w>ie_proxy_info</w>
       <w>if_else</w>
+      <w>ifelse</w>
       <w>image</w>
       <w>image.default</w>
       <w>image_uri</w>
