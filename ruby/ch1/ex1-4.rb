@@ -1,7 +1,7 @@
 require 'test/unit'
 
 def a_plus_abs_b_lambda(a, b)
-  (lambda { |x| x>0 ? a.+(x) : a.-(x) }).call(b)
+  lambda { |x| x>0 ? a.+(x) : a.-(x) }.call(b)
 end
 
 def a_plus_abs_b_operator(a, b)
@@ -9,7 +9,7 @@ def a_plus_abs_b_operator(a, b)
 end
 
 def a_plus_abs_b(a, b)
-  a_plus_abs_b_operator(a, b)
+  a_plus_abs_b_lambda(a, b)
 end
 
 class Ex4Test < Test::Unit::TestCase
