@@ -1,4 +1,5 @@
-function ret-var = a_plus_abs_b (a,b)
-  a+b
+function retval = Ex104 (a,b)
+  p = @(x,y) x + y
+  retvar = p(a,b)
 endfunction
 
