@@ -3,12 +3,14 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/clojure/clojure.iml" filepath="$PROJECT_DIR$/clojure/clojure.iml" />
+      <module fileurl="file://$PROJECT_DIR$/elixir/elixir.iml" filepath="$PROJECT_DIR$/elixir/elixir.iml" />
       <module fileurl="file://$PROJECT_DIR$/erlang/erlang.iml" filepath="$PROJECT_DIR$/erlang/erlang.iml" />
       <module fileurl="file://$PROJECT_DIR$/haskell/haskell.iml" filepath="$PROJECT_DIR$/haskell/haskell.iml" />
       <module fileurl="file://$PROJECT_DIR$/java/java.iml" filepath="$PROJECT_DIR$/java/java.iml" />
       <module fileurl="file://$PROJECT_DIR$/javascript/javascript.iml" filepath="$PROJECT_DIR$/javascript/javascript.iml" />
       <module fileurl="file://$PROJECT_DIR$/julia/julia.iml" filepath="$PROJECT_DIR$/julia/julia.iml" />
       <module fileurl="file://$PROJECT_DIR$/lisp/lisp.iml" filepath="$PROJECT_DIR$/lisp/lisp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/octave/octave.iml" filepath="$PROJECT_DIR$/octave/octave.iml" />
       <module fileurl="file://$PROJECT_DIR$/perl/perl.iml" filepath="$PROJECT_DIR$/perl/perl.iml" />
       <module fileurl="file://$PROJECT_DIR$/python/python.iml" filepath="$PROJECT_DIR$/python/python.iml" />
       <module fileurl="file://$PROJECT_DIR$/racket/racket.iml" filepath="$PROJECT_DIR$/racket/racket.iml" />
