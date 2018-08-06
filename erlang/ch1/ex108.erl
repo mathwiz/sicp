@@ -2,7 +2,9 @@
 %%% @author Yohan
 %%% @copyright (C) 2018, <COMPANY>
 %%% @doc
-%%%
+%%% compile with > c("ex108.erl").
+%%% load with > l(ex108).
+%%% run with > ex108:cbrt(x).
 %%% @end
 %%% Created : 27. Jul 2018 2:36 PM
 %%%-------------------------------------------------------------------
