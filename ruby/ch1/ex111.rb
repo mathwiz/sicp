@@ -34,7 +34,6 @@ class Ex111Test < Test::Unit::TestCase
     # Do nothing
   end
 
-  # Fake test
   def test_1
     assert(f_rec(0) == 0)
     assert(f_rec(1) == 1)
