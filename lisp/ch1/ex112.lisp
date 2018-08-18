@@ -1,8 +1,19 @@
 ;; Produce the elements of pascal's triangle
-(defun pascal (r n)
-  (cond ((= n 1) 1)
-        ((= n r) 1)
-        (t (+ (pascal (- r 1) (- n 1)) (pascal (- r 1) n)))))
+(defun pascal (r n) 
+  (cond ((= n 1) 1) 
+        ((= n r) 1) 
+        (t (+ (pascal (- r 1) 
+                      (- n 1)) 
+              (pascal (- r 1) n)))))
+
+
+(defun p-alt (r n) 
+  (if (or (= n 1) 
+          (= n r))
+      1
+      (+ (pascal (- r 1) 
+                 (- n 1)) 
+         (pascal (- r 1) n))))
 
 
 (print (= (pascal 1 1) 1))
@@ -16,5 +27,6 @@
 (print (= (pascal 5 2) 4))
 (print (= (pascal 5 3) 6))
 (print (= (pascal 5 4) 4))
-(print 'done)
+(print (= (p-alt 5 4) 4))
 
+(print 'done)
