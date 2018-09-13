@@ -16,6 +16,7 @@ Iteration 1
 * Perl
 * Python
 * R
+* Racket
 * Ruby
 * Scala
 * Smalltalk
