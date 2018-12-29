@@ -12,7 +12,7 @@ public class ex113 {
         System.out.println("done");
     }
 
-    static int fib(n) {
+    static long fib(int n) {
         if (n == 1 || n == 0) {
             return n;
         } else {
@@ -20,6 +20,6 @@ public class ex113 {
         }
     }
 
-    static psi = (1 + Math.sqrt(5)) / 2;
-    static phi = (1 - Math.sqrt(5)) / 2;
+    static double psi = (1 + Math.sqrt(5)) / 2;
+    static double phi = (1 - Math.sqrt(5)) / 2;
 }
