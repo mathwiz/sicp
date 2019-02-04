@@ -1,5 +1,13 @@
-pascal <- function(r, n) {
-    if (n == 1 || n == r) 1 else pascal(r-1, n-1) + pascal(r-1, n)
+psi <- function(n) {
+    ((1 + sqrt(5)) / 2) ^ n
+}
+
+phi <- function(n) {
+    ((1 - sqrt(5)) / 2) ^ n
+}
+
+fib <- function(n) {
+    if (n < 2) n else round((psi(n) - phi(n)) / sqrt(5))
 }
 
 
@@ -8,8 +16,11 @@ pascal <- function(r, n) {
 # > test_file('ex113.R')
 
 test_that("fib", {
-    expect_equal(pascal(4, 1), 1)
-    expect_equal(pascal(4, 2), 3)
-    expect_equal(pascal(4, 3), 3)
-    expect_equal(pascal(4, 4), 1)
+    expect_equal(fib(0), 0)
+    expect_equal(fib(1), 1)
+    expect_equal(fib(2), 1)
+    expect_equal(fib(3), 2)
+    expect_equal(fib(4), 3)
+    expect_equal(fib(10), 55)
+    expect_equal(fib(15), 610)
 })
