@@ -14,7 +14,7 @@ function retval = fib(n)
   else
     retval = round((psi(n) - phi(n)) / sqrt(5));
   endif
-endfunctionpp
+endfunction
 
 function retval = psi(n)
   retval = ((1 + sqrt(5)) / 2) ^ n;

@@ -1,4 +1,4 @@
-function Ex111
+function Ex112
   ["row 1: " num2str(pascal(1,1))]
   ["row 2: " num2str(pascal(2,1)) " " num2str(pascal(2,2))]
   ["row 3: " num2str(pascal(3,1)) " " num2str(pascal(3,2)) " " num2str(pascal(3,3))]
