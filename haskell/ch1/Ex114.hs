@@ -4,11 +4,15 @@
 
 module Ex114 where
 
-psi :: Int -> Float
-psi n = ((1.0 + sqrt 5) / 2) ** fromIntegral n
-phi :: Int -> Float
-phi n = ((1.0 - sqrt 5) / 2) ** fromIntegral n
+biggest_denomiation 1 = 1
+biggest_denomiation 2 = 5
+biggest_denomiation 3 = 10
+biggest_denomiation 4 = 25
+biggest_denomiation 5 = 50
 
-fib :: Int -> Int
-fib n | n < 2 = n
-fib n = round (((psi n) - (phi n)) / sqrt(5))
+cc 0 _ = 1
+cc _ 0 = 0
+cc amount _ | amount < 0 = 0
+cc amount kinds_of_coins = cc amount (kinds_of_coins - 1) + cc (amount - (biggest_denomiation kinds_of_coins)) kinds_of_coins
+
+count_change amount = cc amount 5

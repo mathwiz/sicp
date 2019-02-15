@@ -2565,6 +2565,7 @@
       <w>encoded_text_to_latex</w>
       <w>encrypt_envelope</w>
       <w>end</w>
+      <w>endfunction</w>
       <w>ends_with</w>
       <w>enexpr</w>
       <w>enexprs</w>
@@ -5432,6 +5433,7 @@
       <w>retinopathy</w>
       <w>return_from</w>
       <w>return_to</w>
+      <w>retval</w>
       <w>revalue</w>
       <w>revdep</w>
       <w>revdep_check</w>
