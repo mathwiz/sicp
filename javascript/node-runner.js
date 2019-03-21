@@ -1,4 +1,4 @@
-// run with node node-runner.js ExXXX
+// run with node node-runner.js dir/ExXXX
 
 var file = process.argv[2];
 
