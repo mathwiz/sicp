@@ -1,4 +1,5 @@
 // Load with: var ExXXX = require('./ExXXX')
+// Run with: ExXXX.test()
 
 sq = function (x) {
     return x * x;
