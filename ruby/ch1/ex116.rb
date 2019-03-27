@@ -8,24 +8,18 @@ module Ex116
       @n = n
     end
 
-    def expt_inv(p, a)
-      puts "* expt_inv with n=#{@n}, p=#{p}, a=#{a}"
+    def to(ex)
+      def expt_inv(b, p, a)
+        even = Proc.new {(p % 2) == 0}
 
-      even = Proc.new {|x| (x % 2) == 0}
-
-      if p == 0
-        a
-      elsif even.call p
-        MyNum.new(@n * @n).expt_inv(p / 2, a)
-      else
-        expt_inv(p - 1, a * @n)
+        if p == 0
+          return a
+        else
+          even.call ? expt_inv(b * b, p / 2, a) : expt_inv(b, p - 1, a * b)
+        end
       end
-    end
 
-    def to(p)
-      puts "Raising #{@n} to #{p}"
-
-      expt_inv(p, 1)
+      expt_inv(@n, ex, 1)
     end
   end
 
