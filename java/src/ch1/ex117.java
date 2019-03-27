@@ -9,8 +9,9 @@ public class ex117 {
         System.out.println(expt(2, 9));
         System.out.println(expt(3, 4));
         System.out.println(expt(3, 5));
-        System.out.println(makeMult() .apply(9, 5));
-        System.out.println(makeMult() .apply(13, 12));
+        BiFunction<Integer, Integer, Integer> times = makeMult();
+        System.out.println(times .apply(9, 5));
+        System.out.println(times .apply(13, 12));
         System.out.println("done");
     }
 
