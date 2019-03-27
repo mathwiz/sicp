@@ -1,25 +1,30 @@
 require 'test/unit'
 
 module Ex116
-  class Expt
+  class MyNum
+    attr_reader :n
 
-  end
+    def initialize(n)
+      @n = n
+    end
 
-  def sq(x)
-    x * x
-  end
+    def expt_inv(p, a)
+      puts "* expt_inv with n=#{@n}, p=#{p}, a=#{a}"
+      if p == 0
+        a
+      elsif p % 2 == 0
+        MyNum.new(@n * @n).expt_inv(p / 2, a)
+      else
+        expt_inv(p - 1, a * @n)
+      end
+    end
 
-  def p(x)
-    3 * x - 4 * cube(x)
-  end
-
-  def sine(angle)
-    if angle.abs < 0.1
-      angle
-    else
-      p(sine(angle / 3.0))
+    def to(p)
+      puts "Raising #{@n} to #{p}"
+      expt_inv(p, 1)
     end
   end
+
 end
 
 class MyTest < Test::Unit::TestCase
@@ -28,7 +33,8 @@ class MyTest < Test::Unit::TestCase
   # Called before every test method runs. Can be used
   # to set up fixture information.
   def setup
-    @tester = Expt.new
+    @my2 = MyNum.new(2)
+    @my3 = MyNum.new(3)
   end
 
   # Called after every test method runs. Can be used to tear
@@ -39,9 +45,16 @@ class MyTest < Test::Unit::TestCase
   end
 
   def test1
-    assert(sine(0) == 0)
-    assert(sine(1) > 0.84)
-    assert(sine(2) < 0.91)
-    assert(sine(3) < 0.15)
+    puts "Testing #{@my2.n}"
+    self.assert_equal 1, @my2.to(0)
+    self.assert_equal 2, @my2.to(1)
+    self.assert_equal 16, @my2.to(4)
+    self.assert_equal 512, @my2.to(9)
+  end
+
+  def test2
+    puts "Testing #{@my3.n}"
+    self.assert_equal 81, @my3.to(4)
+    self.assert_equal 243, @my3.to(5)
   end
 end
