@@ -1,4 +1,4 @@
-function Ex114
+function Ex115
   sine(0)
   sine(1)
   sine(2)
