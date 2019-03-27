@@ -9,19 +9,19 @@
               :else (expt-invariant b (dec p) (* a b))))
 
 
-(defn expt-inv [b p]
+(defn expt [b p]
   (expt-invariant b p 1))
 
 
 (require
  'clojure.test)
 
-(clojure.test/is (= (expt-inv 2 0) 1))
-(clojure.test/is (= (expt-inv 2 1) 2))
-(clojure.test/is (= (expt-inv 2 2) 4))
-(clojure.test/is (= (expt-inv 2 5) 32))
-(clojure.test/is (= (expt-inv 2 9) 512))
-(clojure.test/is (= (expt-inv 3 4) 81))
-(clojure.test/is (= (expt-inv 3 5) 243))
+(clojure.test/is (= (expt 2 0) 1))
+(clojure.test/is (= (expt 2 1) 2))
+(clojure.test/is (= (expt 2 2) 4))
+(clojure.test/is (= (expt 2 5) 32))
+(clojure.test/is (= (expt 2 9) 512))
+(clojure.test/is (= (expt 3 4) 81))
+(clojure.test/is (= (expt 3 5) 243))
 
 (println 'done)
