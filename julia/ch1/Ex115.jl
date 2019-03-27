@@ -1,9 +1,4 @@
 """
-# module Ex114
-
-
-# Examples
-
 ```jldoctest
 julia> include("c:/Users/Yohan/IdeaProjects/sicp/julia/ch1/exXXX.jl")
 
