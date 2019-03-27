@@ -10,9 +10,12 @@ module Ex116
 
     def expt_inv(p, a)
       puts "* expt_inv with n=#{@n}, p=#{p}, a=#{a}"
+
+      even = Proc.new {|x| (x % 2) == 0}
+
       if p == 0
         a
-      elsif p % 2 == 0
+      elsif even.call p
         MyNum.new(@n * @n).expt_inv(p / 2, a)
       else
         expt_inv(p - 1, a * @n)
@@ -21,13 +24,14 @@ module Ex116
 
     def to(p)
       puts "Raising #{@n} to #{p}"
+
       expt_inv(p, 1)
     end
   end
 
 end
 
-class MyTest < Test::Unit::TestCase
+class Ex116Test < Test::Unit::TestCase
   include Ex116
 
   # Called before every test method runs. Can be used
