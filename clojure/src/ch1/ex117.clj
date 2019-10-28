@@ -1,31 +1,22 @@
 ;; (load-file "filename.clj")
 
-(defn square [x] (* x x))
+(defn double [x] (* x 2))
 
+(defn halve [x] (/ x 2))
 
-(defn expt-invariant [b p a]
-  (cond (= p 0)   a
-        (even? p) (expt-invariant (square b) (/ p 2) a)
-        :else     (expt-invariant b (dec p) (* a b))))
+(defn even? [x] (= (mod x 2) 0))
 
-(defn expt [b p]
-  (expt-invariant b p 1))
+(defn mult-invariant [a b acc]
+  (cond (= b 0)   acc
+        (even? b) (recur (double a) (halve b) acc)
+        :else     (recur a (dec b) (+ acc a))))
 
 (defn times [a b]
-  (cond (= b 0) 0
-        :else   (+ a (times a (dec b)))))
+  (mult-invariant a b 0))
 
 
 (require
  'clojure.test)
-
-(clojure.test/is (= (expt 2 0) 1))
-(clojure.test/is (= (expt 2 1) 2))
-(clojure.test/is (= (expt 2 2) 4))
-(clojure.test/is (= (expt 2 5) 32))
-(clojure.test/is (= (expt 2 9) 512))
-(clojure.test/is (= (expt 3 4) 81))
-(clojure.test/is (= (expt 3 5) 243))
 
 (clojure.test/is (= (times 2 0) 0))
 (clojure.test/is (= (times 2 1) 2))
