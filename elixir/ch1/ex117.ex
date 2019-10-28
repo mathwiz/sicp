@@ -3,14 +3,20 @@
 # Run with Module.func(args)
 defmodule Ex117 do
   @moduledoc false
-  def square(x), do: x * x
+  def double(x), do: x * 2
 
-  def expt_invariant(_, 0, a), do: a
-  def expt_invariant(b, p, a) when rem(p,2) == 0, do: expt_invariant(square(b), div(p,2), a)
-  def expt_invariant(b, p, a), do: expt_invariant(b, p-1, a*b)
+  def halve(x), do: div(x, 2)
 
-  def expt(b, p), do: expt_invariant(b, p, 1)
+  def even?(x), do: rem(x, 2) == 0
 
-  def times(a, 0), do: 0
-  def times(a, b), do: a + times(a, b-1)
+  def mult_invariant(_, 0, a), do: a
+  def mult_invariant(b, p, a) do
+    if even?(p) do
+      mult_invariant(double(b), halve(p), a)
+    else
+      mult_invariant(b, p - 1, a + b)
+    end
+  end
+
+  def times(a, b), do: mult_invariant(a, b, 0)
 end
