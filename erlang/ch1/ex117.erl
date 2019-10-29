@@ -13,7 +13,7 @@
 -author("Yohan").
 
 %% API
--export([main/0, expt/2, times/2]).
+-export([main/0, times/2]).
 
 main() ->
   io:fwrite("~w\n", [times(2, 0)]),
@@ -23,13 +23,12 @@ main() ->
   io:fwrite("~w\n", [times(3, 5)]).
 
 
-sq(X) -> X * X.
+double(X) -> X * 2.
 
-expt_invariant(_, 0, A) -> A;
-expt_invariant(B, P, A) when (P rem 2 == 0) -> expt_invariant(sq(B), P div 2, A);
-expt_invariant(B, P, A) -> expt_invariant(B, P - 1, A * B).
+halve(X) -> X div 2.
 
-expt(B, P) -> expt_invariant(B, P, 1).
+mult_invariant(_, 0, A) -> A;
+mult_invariant(B, P, A) when (P rem 2 == 0) -> mult_invariant(double(B), halve(P), A);
+mult_invariant(B, P, A) -> mult_invariant(B, P - 1, A + B).
 
-times(_, 0) -> 0;
-times(A, B) -> A + times(A, B - 1).
+times(A, B) -> mult_invariant(A, B, 0).
