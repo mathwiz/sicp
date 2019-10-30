@@ -5,20 +5,15 @@ even = function (x) {
     return x % 2 == 0;
 };
 
-expt_invariant = function (b, p, a) {
+mult_invariant = function (b, p, a) {
     if (p == 0) return a;
-    if (even(p)) return expt_invariant(b * b, p / 2, a);
-    return expt_invariant(b, p - 1, a * b);
+    if (even(p)) return mult_invariant(b * 2, p / 2, a);
+    return mult_invariant(b, p - 1, a + b);
 };
 
-expt = function (b, p) {
-    return expt_invariant(b, p, 1);
+times = function (b, p) {
+    return mult_invariant(b, p, 0);
 };
 
-times = function (a, b) {
-    if (b == 0) return 0;
-    return a + times(a, b - 1);
-};
 
-exports.expt = expt;
 exports.times = times;
