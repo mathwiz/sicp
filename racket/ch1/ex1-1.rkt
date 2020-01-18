@@ -1,33 +1,34 @@
-#lang racket
-10
+;; run with racket -f ex1-1.rkt
 
-(+ 5 3 4)
+(println 10)
 
-(- 9 1)
+(println (+ 5 3 4))
 
-(/ 6 2)
+(println (- 9 1))
 
-(+ (* 2 4) (- 4 6))
+(println (/ 6 2))
+
+(println (+ (* 2 4) (- 4 6)))
 
 (define a 3)
 
 (define b (+ a 1))
 
-(+ a b (* a b))
+(println (+ a b (* a b)))
 
-(= a b)
+(println (= a b))
 
-(if (and (> b a) (< b (* a b)))
-    b
-    a)
+(println (if (and (> b a) (< b (* a b)))
+     b
+     a))
 
-(cond ((= a 4) 6)
-      ((= b 4) (+ 6 7 a))
-      (else 25))
+(println (cond ((= a 4) 6)
+       ((= b 4) (+ 6 7 a))
+       (else 25)))
 
-(+ 2 (if (> b a) b a))
+(println (+ 2 (if (> b a) b a)))
 
-(* (cond ((> a b) a)
-         ((< a b) b)
-         (else -1))
-   (+ a 1))
+(println (* (cond ((> a b) a)
+          ((< a b) b)
+          (else -1))
+    (+ a 1)))
