@@ -1,8 +1,4 @@
-#lang racket
-(require rackunit)
-
-; load with (require "ex1-7.rkt")
-(provide my-sqrt)
+; run with racket -f filename
 
 (define (sqrt-iter guess x) 
   (if (good-enough? guess x) guess (sqrt-iter (improve guess x) x)))
@@ -25,7 +21,8 @@
 
 (define delta 0.00001)
 (define small (expt 2 -10))
-(check-= (my-sqrt 2) (sqrt 2)  delta)
-(check-= (my-sqrt .2) (sqrt .2) delta)
-(check-= (my-sqrt small) (sqrt small) delta)
-(write "done")
+(println (< (abs (- (my-sqrt 2) (sqrt 2))) delta))
+(println (< (abs (- (my-sqrt .2) (sqrt .2))) delta))
+(println (< (abs (- (my-sqrt small) (sqrt small))) delta))
+
+(writeln 'done)
