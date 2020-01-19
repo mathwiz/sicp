@@ -28,5 +28,6 @@
   (bad-sqrt-iter 1.0 x))
 
 
-(println (my-sqrt 2) )
+(println (my-sqrt 2))
+(println (sqrt 2))
 (writeln 'done)
