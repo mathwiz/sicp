@@ -1,8 +1,4 @@
-#lang racket
-(require rackunit)
-
-; load with (require "ex108.rkt")
-(provide my-cbrt)
+; run with: racket -f ex108.rkt
 
 (define (cbrt-iter guess x) 
   (if (good-enough? guess x) guess (cbrt-iter (improve guess x) x)))
@@ -23,10 +19,9 @@
   (* x x x))
 
 
-;; Run from shell$ racket ex108.rkt
 (define delta 0.0001)
-(check-= (cube (my-cbrt 27)) 27 delta)
-(check-= (cube (my-cbrt 0.000027)) 0.000027 delta)
-(check-= (cube (my-cbrt 2)) 2 delta)
-;; Failing test: (check-= (my-cbrt 3) 1.44 delta)
-(write "done")
+(println (< (- (cube (my-cbrt 27)) 27) delta ))
+(println (< (- (cube (my-cbrt 0.00027)) 0.00027) delta))
+(println (< (- (cube (my-cbrt 2)) 2) delta))
+
+(writeln 'done)
