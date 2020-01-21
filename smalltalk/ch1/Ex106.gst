@@ -2,14 +2,14 @@ Object subclass: Ex106 [
 
 sqrt: x [
 	| average improve is_good_enough sqrt_iter |
-	average := [ :a :b | (a + b) / 2.0 ].
+	average := [ :a :b | (a + b) / 2.0e ].
 	improve := [ :guess :t | average value: guess value: t / guess ].
-	is_good_enough := [ :guess :t | (guess * guess - t) abs < 0.001 ].
+	is_good_enough := [ :guess :t | (guess * guess - t) abs < 0.001e ].
 	sqrt_iter := [ :guess :t | 
 	(is_good_enough value: guess value: t)
 		ifTrue: [guess]
 		ifFalse: [(sqrt_iter value: (improve value: guess value: t) value: t)] ].
-	^ sqrt_iter value: 1.0 value: x
+	^ sqrt_iter value: 1.0e value: x
 ]
 
 sqrtIter: guess to: t [
@@ -25,7 +25,7 @@ sqrtIter: guess to: t [
 ]
 
 sqrtAlt: x [
-	^ self sqrtIter: 1.0 to: x
+	^ self sqrtIter: 1.0e to: x
 ]
 
 ] "Ex106"
@@ -49,7 +49,7 @@ tolerance [
 
 init: x [
 	goal := x.
-	tolerance := 0.001
+	tolerance := 0.001e
 ]
 
 ] "GoodEnough"
@@ -59,20 +59,22 @@ Object subclass: ImproveGuessSqrt [
 
 improve: guess To: t [
 	"improve a single number guess"
-	^ (guess + (t / guess)) / 2.0
+	^ (guess + (t / guess)) / 2.0e
 ]
 
 ] "ImproveGuessSqrt"
 
 
-| test |
+| test guess t |
 
-
+guess := 3.0e.
+t := 1.4e.
+((guess + (t / guess)) / 2.0e) printNl.
 test := ImproveGuessSqrt new.
-(test improve: 3.0 To: 1.4) printNl.
+(test improve: 3.0e To: 1.4e) printNl.
 
 test := Ex106 new.
-"(test sqrt: 9.0) printNl."
-"(test sqrt: 2.0) printNl."
-"(test sqrt: 25.0) printNl."
+(test sqrt: 9.0e) printNl.
+(test sqrt: 2.0e) printNl.
+(test sqrt: 25.0e) printNl.
 
