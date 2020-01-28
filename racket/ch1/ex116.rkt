@@ -1,5 +1,3 @@
-#lang racket
-
 (define (square x) (* x x))
 
 (define (even? x)
@@ -14,14 +12,12 @@
         (else (expt-invariant b (sub1 p) (* a b)))))
 
 
-(require rackunit)
-
-(check-true (= (expt-inv 2 0) 1))
-(check-true (= (expt-inv 2 1) 2))
-(check-true (= (expt-inv 2 2) 4))
-(check-true (= (expt-inv 2 5) 32))
-(check-true (= (expt-inv 2 9) 512))
-(check-true (= (expt-inv 3 4) 81))
-(check-true (= (expt-inv 3 5) 243))
+(println (= (expt-inv 2 0) 1))
+(println (= (expt-inv 2 1) 2))
+(println (= (expt-inv 2 2) 4))
+(println (= (expt-inv 2 5) 32))
+(println (= (expt-inv 2 9) 512))
+(println (= (expt-inv 3 4) 81))
+(println (= (expt-inv 3 5) 243))
 (write 'done)
 
