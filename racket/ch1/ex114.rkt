@@ -1,5 +1,3 @@
-#lang racket
-
 (define (biggest-denomination kinds-of-coins)
   (cond ((= kinds-of-coins 1) 1)
         ((= kinds-of-coins 2) 5)
@@ -32,8 +30,8 @@
   (cc amount 5))
 
 
-
-;(write (count-change 11))
+(println "Testing (count-change 11)")
+(println (count-change 11))
 ;; There are 4 ways to count 11 cents change
 ;; Tree
 ;;                                                       (cc 11 5)
