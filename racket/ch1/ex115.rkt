@@ -1,6 +1,3 @@
-#lang racket
-
-
 ;;; Model sine function via:
 ;;; sin(x) approx= x if x is small, and the identity
 ;;; sin(x) = 3sin(x/3) - 4(sin(x/3))^3
@@ -22,3 +19,10 @@
 
 ;;; a) How many times is p applied when (sine 12.15) is evaluated? 5
 ;;; b) What is the order of growth in space and number of steps (as a function of a) when (sine a) is evaluated? O(log a)
+
+(println "Testing sine")
+(println (sine 0))
+(println (sine pi))
+(println (sine (/ pi 2)))
+(println (sine (/ pi 4)))
+(writeln 'done)
