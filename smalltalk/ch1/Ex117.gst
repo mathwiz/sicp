@@ -19,6 +19,7 @@ mult := [ :a :b | mult_inv value: a value: b value: 0 ].
 
 (mult value: 5 value: 6) printNl.
 (mult value: 5 value: 12) printNl.
+(mult value: 5 value: 15) printNl.
 (mult value: 7 value: 7) printNl.
 (mult value: 7 value: 8) printNl.
 (mult value: 7 value: 9) printNl.
