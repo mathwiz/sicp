@@ -9,8 +9,8 @@
         ((evenp count)
          (fib-iter a
                    b
-                   NIL
-                   NIL
+                   q
+                   (1+ q)
                    (/ count 2)))
         (t (fib-iter (+ (* b q) (* a q) (* a p))
                      (+ (* b p) (* a q))
@@ -21,11 +21,15 @@
 
 (print (= (fib 0) 0))
 (print (= (fib 1) 1))
-(print (= (fib 2) 2))
-(print (= (fib 3) 3))
-(print (= (fib 4) 5))
-(print (= (fib 5) 8))
-(print (= (fib 6) 13))
+(print (= (fib 2) 1))
+(print (= (fib 3) 2))
+(print (= (fib 4) 3))
+(print (= (fib 5) 5))
+;(print (= (fib 15) 610))
+(print (fib 2))
+(print (fib 3))
+(print (fib 4))
+(print (fib 5))
 (print (fib 6))
 
 (print "done")
