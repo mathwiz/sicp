@@ -1,10 +1,10 @@
 (define (mult a b)
-  (mult-invariant a b 0))
+  (cond ((= b 0) 0)
+        ((even? b) (double (mult a (halve b))))
+        (else (+ a (mult a (sub1 b))))))
 
-(define (mult-invariant a b acc)
-  (cond ((= b 0) acc)
-        ((even? b) (mult-invariant (* a 2) (/ b 2) acc))
-        (else (mult-invariant a (- b 1) (+ a acc)))))
+(define (double x) (+ x x))
+(define (halve x) (/ x 2))
 
 
 (println (mult 2 3))
