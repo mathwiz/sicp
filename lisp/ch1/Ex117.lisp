@@ -1,16 +1,10 @@
 (defun mult (a b)
-  (mult-invariant a b 0))
+  (cond ((= b 0) 0)
+        ((evenp b) (double (mult a (halve b))))
+        (t (+ a (mult a (1- b))))))
 
-
-(defun even? (n)
-  (= (mod n 2) 0))
-
-
-(defun mult-invariant (b n a)
-  (cond ((= n 0) a)
-        ((even? n) (mult-invariant (* b 2) (/ n 2) a))
-        (t (mult-invariant b (- n 1) (+ a b)))))
-
+(defun double (x) (* x 2))
+(defun halve (x) (/ x 2))
 
 (print (mult 2 3))
 (print (mult 2 4))
