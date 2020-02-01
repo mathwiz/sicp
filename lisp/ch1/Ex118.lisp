@@ -1,35 +1,22 @@
-;; Load with (load "file")
-;; or run > clisp file
-
-(defun fib (n)
-  (fib-iter 1 0 0 1 n))
-
-(defun fib-iter (a b p q count)
-  (cond ((= count 0) b)
-        ((evenp count)
-         (fib-iter a
-                   b
-                   q
-                   (1+ q)
-                   (/ count 2)))
-        (t (fib-iter (+ (* b q) (* a q) (* a p))
-                     (+ (* b p) (* a q))
-                     p
-                     q
-                     (- count 1)))))
+(defun mult (a b)
+  (mult-invariant a b 0))
 
 
-(print (= (fib 0) 0))
-(print (= (fib 1) 1))
-(print (= (fib 2) 1))
-(print (= (fib 3) 2))
-(print (= (fib 4) 3))
-(print (= (fib 5) 5))
-;(print (= (fib 15) 610))
-(print (fib 2))
-(print (fib 3))
-(print (fib 4))
-(print (fib 5))
-(print (fib 6))
+(defun even? (n)
+  (= (mod n 2) 0))
 
-(print "done")
+
+(defun mult-invariant (b n a)
+  (cond ((= n 0) a)
+        ((even? n) (mult-invariant (* b 2) (/ n 2) a))
+        (t (mult-invariant b (- n 1) (+ a b)))))
+
+
+(print (mult 2 3))
+(print (mult 2 4))
+(print (mult 2 9))
+(print (mult 3 3))
+(print (mult 3 4))
+
+(print 'done)
+
