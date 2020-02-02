@@ -1,7 +1,7 @@
 # cd("c:/Users/Yohan/IdeaProjects/sicp/elixir/ch1")
 # Load with import_file("filename")
 # Run with Module.func(args)
-defmodule Ex117 do
+defmodule Ex118 do
   @moduledoc false
   def double(x), do: x * 2
 
@@ -9,14 +9,14 @@ defmodule Ex117 do
 
   def even?(x), do: rem(x, 2) == 0
 
-  def mult_invariant(_, 0), do: 0
-  def mult_invariant(a, b) do
-    if even?(b) do
-      double(mult_invariant(a, halve(b)))
+  def mult_invariant(_, 0, a), do: a
+  def mult_invariant(b, p, a) do
+    if even?(p) do
+      mult_invariant(double(b), halve(p), a)
     else
-      a + mult_invariant(a, b - 1)
+      mult_invariant(b, p - 1, a + b)
     end
   end
 
-  def times(a, b), do: mult_invariant(a, b)
+  def times(a, b), do: mult_invariant(a, b, 0)
 end
