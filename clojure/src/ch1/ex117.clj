@@ -1,18 +1,14 @@
 ;; (load-file "filename.clj")
 
-(defn double [x] (* x 2))
-
 (defn halve [x] (/ x 2))
 
-(defn even? [x] (= (mod x 2) 0))
-
-(defn mult-invariant [a b acc]
-  (cond (= b 0)   acc
-        (even? b) (recur (double a) (halve b) acc)
-        :else     (recur a (dec b) (+ acc a))))
+(defn mult [a b]
+  (cond (= b 0)   0
+        (even? b) (double (mult a (halve b)))
+        :else     (+ a (mult a (dec b)))))
 
 (defn times [a b]
-  (mult-invariant a b 0))
+  (mult a b))
 
 
 (require
