@@ -24,7 +24,6 @@ defmodule Ex119 do
         b*p + a*q,
         p,
         q,
-
         count - 1)
     end
   end
