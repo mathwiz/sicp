@@ -9,7 +9,7 @@
 %%%
 %%% @end
 %%%-------------------------------------------------------------------
--module(ex117).
+-module(ex118).
 -author("Yohan").
 
 %% API
@@ -27,8 +27,8 @@ double(X) -> X * 2.
 
 halve(X) -> X div 2.
 
-mult_invariant(_, 0) -> 0;
-mult_invariant(A, B) when (B rem 2 == 0) -> double(mult_invariant(halve(B), A));
-mult_invariant(A, B) -> A + mult_invariant(A, B-1).
+mult_invariant(_, 0, A) -> A;
+mult_invariant(B, P, A) when (P rem 2 == 0) -> mult_invariant(double(B), halve(P), A);
+mult_invariant(B, P, A) -> mult_invariant(B, P - 1, A + B).
 
-times(A, B) -> mult_invariant(A, B).
+times(A, B) -> mult_invariant(A, B, 0).
