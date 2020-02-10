@@ -4,8 +4,8 @@
 
 module Ex117 where
 
-mult_invariant _ 0 a = a
-mult_invariant b p a | even p = mult_invariant (b*2) (div p 2) a
-mult_invariant b p a = mult_invariant b (p - 1) (a + b)
+mult_invariant _ 0 = 0
+mult_invariant a b | even b = 2 * (mult_invariant a (div b 2))
+mult_invariant a b = a + mult_invariant a (b - 1)
 
-times a b = mult_invariant a b 0
+times a b = mult_invariant a b
