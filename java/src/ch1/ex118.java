@@ -1,8 +1,8 @@
 package ch1;
 
-public class ex117 {
+public class ex118 {
     public static void main(String[] args) {
-        Times func = (int i, int i2) -> mult_invariant(i, i2);
+        Times func = (int i, int i2) -> mult_invariant(i, i2, 0);
 
         System.out.println(func.apply(9, 5));
         System.out.println(func.apply(9, 8));
@@ -16,10 +16,10 @@ public class ex117 {
         int apply(int i, int i2);
     }
 
-    static int mult_invariant(int a, int b) {
-        if (b == 0) return 0;
-        if (even(b)) return 2 * mult_invariant(a, b / 2);
-        return a + mult_invariant(a, b - 1);
+    static int mult_invariant(int b, int p, int a) {
+        if (p == 0) return a;
+        if (even(p)) return mult_invariant(b * 2, p / 2, a);
+        return mult_invariant(b, p - 1, a + b);
     }
 
     static boolean even(int x) {
