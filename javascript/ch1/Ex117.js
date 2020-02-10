@@ -5,14 +5,14 @@ even = function (x) {
     return x % 2 == 0;
 };
 
-mult_invariant = function (b, p, a) {
-    if (p == 0) return a;
-    if (even(p)) return mult_invariant(b * 2, p / 2, a);
-    return mult_invariant(b, p - 1, a + b);
+mult_invariant = function (a, b) {
+    if (b == 0) return 0;
+    if (even(b)) return 2 * mult_invariant(a, b / 2);
+    return a + mult_invariant(a, b - 1);
 };
 
-times = function (b, p) {
-    return mult_invariant(b, p, 0);
+times = function (a, b) {
+    return mult_invariant(a, b);
 };
 
 
