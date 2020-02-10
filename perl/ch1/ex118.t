@@ -9,21 +9,21 @@ sub even {
 }
 
 sub mult_inv {
-    my ($a, $b) = @_;
+    my ($a, $b, $acc) = @_;
     if ($b == 0) {
-        return 0;
+        return $acc;
     }
     elsif (even($b)) {
-        return 2 * mult_inv($a, $b / 2);
+        return mult_inv($a * 2, $b / 2, $acc);
     }
     else {
-        return $a + mult_inv($a, $b - 1);
+        return mult_inv($a, $b - 1, $acc + $a);
     }
 }
 
 sub mult {
     my ($a, $b) = @_;
-    mult_inv($a, $b);
+    mult_inv($a, $b, 0);
 }
 
 isnt(even(1), 1);
