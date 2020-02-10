@@ -8,30 +8,30 @@ sub even {
     (shift @_) % 2 == 0;
 }
 
-sub mult_inv {
+sub fib_iter {
     my ($a, $b, $acc) = @_;
     if ($b == 0) {
         return $acc;
     }
     elsif (even($b)) {
-        return mult_inv($a * 2, $b / 2, $acc);
+        return fib_iter($a * 2, $b / 2, $acc);
     }
     else {
-        return mult_inv($a, $b - 1, $acc + $a);
+        return fib_iter($a, $b - 1, $acc + $a);
     }
 }
 
-sub mult {
+sub fib {
     my ($a, $b) = @_;
-    mult_inv($a, $b, 0);
+    fib_iter($a, $b, 0);
 }
 
 isnt(even(1), 1);
 is(even(2), 1);
-is(mult(2, 0), 0);
-is(mult(2, 9), 18);
-is(mult(3, 4), 12);
-is(mult(3, 5), 15);
+is(fib(2, 0), 0);
+is(fib(2, 9), 18);
+is(fib(3, 4), 12);
+is(fib(3, 5), 15);
 
 done_testing();
 
