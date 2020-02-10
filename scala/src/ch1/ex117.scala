@@ -1,12 +1,12 @@
 def even(x: Int) = x % 2 == 0
 
-def mult_inv(b: Int, p: Int, a: Int): Int = p match {
-  case 0 => a
-  case x if even(x) => mult_inv(b * 2, p / 2, a)
-  case _ => mult_inv(b, p - 1, a + b)
+def mult_inv(a: Int, b: Int): Int = b match {
+  case 0 => 0
+  case x if even(x) => 2 * mult_inv(a, b  / 2)
+  case _ => a + mult_inv(a, b - 1)
 }
 
-def mult(b: Int, p: Int) = mult_inv(b, p, 0)
+def mult(a: Int, b: Int) = mult_inv(a, b)
 
 assert(mult(2, 10) == 20)
 assert(mult(2, 256) == 512)
