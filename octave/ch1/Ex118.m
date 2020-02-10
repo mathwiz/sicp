@@ -1,4 +1,4 @@
-function Ex117
+function Ex118
   mult(2,0)
   mult(2,9)
   mult(3,4)
@@ -6,17 +6,17 @@ function Ex117
 endfunction
 
 function VAL = mult(a, b)
-  VAL = mult_inv(a, b);
+  VAL = mult_inv(a, b, 0);
 endfunction
 
-function VAL = mult_inv(a, b)
+function VAL = mult_inv(a, b, acc)
   even = @(x) mod(x,2) == 0;
   
   if (b == 0)
-    VAL = 0;
+    VAL = acc;
   elseif (even(b))
-    VAL = 2 * mult_inv(a, b/2);
+    VAL = mult_inv(a*2, b/2, acc);
   else
-    VAL = a + mult_inv(a, b-1);
+    VAL = mult_inv(a, b-1, acc+a);
   endif
 endfunction
