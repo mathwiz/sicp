@@ -7,15 +7,15 @@ julia> ExXXX.func(arg)
 """
 module Ex117
 
-times(b, p) = mult_inv(b, p, 0)
+times(a, b) = mult_inv(a, b)
 
-function mult_inv(b, p, a)
-    if p == 0
-        return a
-    elseif p % 2 == 0
-        return mult_inv(b * 2, p / 2, a)
+function mult_inv(a, b)
+    if b == 0
+        return 0
+    elseif b % 2 == 0
+        return 2 * mult_inv(a, b / 2)
     else
-        return mult_inv(b, p - 1, a + b)
+        return a + mult_inv(a, b - 1)
     end
 end
 
