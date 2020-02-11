@@ -3,19 +3,19 @@ even := [ :x | (x rem: 2) == 0 ].
 (even value: 1) printNl.
 (even value: 2) printNl.
 
-mult_inv := [ :a :b |
+mult_inv := [ :a :b :acc |
 b == 0 
-ifTrue: [ 0 ]
-ifFalse: [ maintain_invariant value: a value: b ]
+ifTrue: [ acc ] 
+ifFalse: [ maintain_invariant value: a value: b value: acc ]
 ].
 
-maintain_invariant := [ :a :b |
+maintain_invariant := [ :a :b :acc |
 (even value: b) 
-ifTrue: [ 2 * (mult_inv value: a value: (b/2)) ]
-ifFalse: [ a + (mult_inv value: a value: (b-1)) ]
+ifTrue: [ mult_inv value: (a*2) value: (b/2) value: acc ]
+ifFalse: [ mult_inv value: a value: (b-1) value: (acc+a) ]
 ].
 
-mult := [ :a :b | mult_inv value: a value: b ].
+mult := [ :a :b | mult_inv value: a value: b value: 0 ].
 
 (mult value: 5 value: 6) printNl.
 (mult value: 5 value: 12) printNl.
