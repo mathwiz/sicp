@@ -2,18 +2,18 @@ even<- function(x) {
     x %% 2 == 0
 }
 
-mult_inv<- function(a, b) {
-    if (b == 0) {
-        0
-    } else if (even(b)) {
-        2 * mult_inv(a, b/2)
+mult_inv<- function(b, p, a) {
+    if (p == 0) {
+        a
+    } else if (even(p)) {
+        mult_inv(b*2, p/2, a)
     } else {
-        a + mult_inv(a, b-1)
+        mult_inv(b, p-1, a+b)
     }
 }
 
-mult<- function(a, b) {
-    mult_inv(a, b)
+mult<- function(b, p) {
+    mult_inv(b, p, 0)
 }
 
 
