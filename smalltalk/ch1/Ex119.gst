@@ -13,6 +13,7 @@ getQ [ ^ vals at: 4 ]
 
 ] "end Args"
 
+sq := [ :x | x * x ].
 
 even := [ :x | (x rem: 2) == 0 ].
 
@@ -30,8 +31,8 @@ p := vals getP.
 q := vals getQ.
 
 (even value: count)
-ifTrue: [ fib_iter value: ( (Args new) setA:a B:b P:((p*p) + (q*q)) Q:((q*q) + (2*p*q)) ) value: (count/2) ]
-ifFalse: [ fib_iter value: ( (Args new) setA:((b*p) + (a*q) + (a*p)) B:((b*p) + (a*q)) P:p Q:q ) value: (count-1) ]
+ifTrue: [ fib_iter value: ( (Args new) setA:a B:b P:((sq value:p) + (sq value:q)) Q:((sq value:q) + (2*p*q)) ) value: (count/2) ]
+ifFalse: [ fib_iter value: ( (Args new) setA:((b*q) + (a*q) + (a*p)) B:((b*p) + (a*q)) P:p Q:q ) value: (count-1) ]
 ].
 
 fib := [ :n | 
@@ -42,7 +43,7 @@ fib_iter value: args value: n ].
 
 
 | test |
-test := (OrderedCollection new) add:1 ;add:0 ;add:0 ;add:1;yourself.
+test := (OrderedCollection new) add:1; add:0; add:0; add:1; yourself.
 (test at:1) printNl.
 
 test := Args new.
@@ -64,6 +65,6 @@ test setA:1 B:1 P:2 Q:3.
 ((fib value: 12) == 144) printNl.
 ((fib value: 13) == 233) printNl.
 ((fib value: 14) == 377) printNl.
-((fib value: 15) == 610) printNl. "why?"
+((fib value: 15) == 610) printNl.
 
 
