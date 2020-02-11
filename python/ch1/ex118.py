@@ -4,17 +4,17 @@ def even(x):
     return x % 2 == 0
 
 
-def mult_inv(a, b):
+def mult_inv(a, b, acc):
     if b == 0:
-        return 0
+        return acc
     elif even(b):
-        return 2 * mult_inv(a, b / 2)
+        return mult_inv(a * 2, b / 2, acc)
     else:
-        return a + mult_inv(a, b - 1)
+        return mult_inv(a, b - 1, a + acc)
 
 
 def mult(a, b):
-    return mult_inv(a, b)
+    return mult_inv(a, b, 0)
 
 
 class MyTestCase(unittest.TestCase):
