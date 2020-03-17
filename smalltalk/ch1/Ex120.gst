@@ -15,12 +15,12 @@ eval [
     ifTrue: [ 'gcd ' print. a print. ' ' print. b printNl. 
               ^a ]
     ifFalse: [ 'remainder ' print. a print. ' ' print. b printNl.
-              ^((Gcd new) setA: b B: (a \\ b)) eval ] 
+              ^(Gcd new setA: b B: (a \\ b)) eval ] 
 ]
 
 ] "Gcd"
 
 | test |
-test := ((Gcd new) setA: 406 B: 40) eval.
+test := (Gcd new setA: 406 B: 40) eval.
 test printNl.
 
