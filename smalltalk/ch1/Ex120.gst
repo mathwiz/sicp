@@ -1,16 +1,12 @@
 Object subclass: Gcd [
-| args |
+| a b |
 
-setA: a B: b [
-    args := Dictionary new.
-    args at: #a put: a.
-    args at: #b put: b.
+setA: a1 B: a2 [
+    a := a1.
+    b := a2.
 ]
 
 eval [
-    | a b |
-    a := (args at: #a).
-    b := (args at: #b).
     b == 0 
     ifTrue: [ 'gcd ' print. a print. ' ' print. b printNl. 
               ^a ]
