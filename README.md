@@ -22,3 +22,11 @@ Iteration 1
 * Smalltalk
 
 Iteration 2
+* Common Lisp
+* Haskell
+* Octave
+* Perl
+* Python
+* R
+* Ruby
+* Smalltalk
