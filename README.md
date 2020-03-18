@@ -27,6 +27,6 @@ Iteration 2
 * Octave
 * Perl
 * Python
-* R
+* Racket
 * Ruby
 * Smalltalk
