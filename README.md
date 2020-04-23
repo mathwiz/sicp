@@ -25,8 +25,9 @@ Iteration 2
 * Common Lisp
 * Haskell
 * Octave
+* Smalltalk
 * Perl
 * Python
 * Racket
 * Ruby
-* Smalltalk
+
