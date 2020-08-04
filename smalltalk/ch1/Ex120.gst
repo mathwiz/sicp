@@ -22,11 +22,21 @@ eval [
               ^(Gcd new setA: b B: (a \\ b)) eval ] 
 ]
 
+Gcd class >> withA: aNumber B: bNumber [
+    ^Gcd new
+        a: aNumber;
+        b: bNumber.
+]
+
 ] "Gcd"
 
-| test test2 |
+
+| test |
 test := (Gcd new setA: 406 B: 40) eval.
 test printNl.
 
-test2 := (Gcd new a: 406; b: 40) eval.
-test2 printNl.
+test := (Gcd new a: 406; b: 40) eval.
+test printNl.
+
+test := (Gcd withA: 406 B: 40) eval.
+test printNl.
