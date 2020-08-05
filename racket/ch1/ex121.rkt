@@ -1,17 +1,26 @@
 #lang racket
 
-(provide verbose-gcd)
+(provide smallest-divisor)
 
-(define verbose-gcd 
-  (lambda (a b)
-    (cond ((= b 0) (begin
-                     (printf "(verbose-gcd ~a ~a)~n" a b)
-                     a))
-          (else (begin
-                  (printf "(remainder ~a ~a)~n" a b)
-                  (verbose-gcd b (remainder a b)))))))
+(define (smallest-divisor n)
+  (find-divisor n 2))
+
+(define (find-divisor n test-divisor)
+  (cond ((> (square test-divisor) n) n)
+        ((divides? test-divisor n) test-divisor)
+        (else (find-divisor n (add1 test-divisor)))))
+
+(define (divides? a b)
+  (= (remainder b a) 0))
+
+(define (square n)
+  (* n n))
 
 
-;; testing
-(writeln (verbose-gcd 206 40))
+;; usage: racket filename.rkt
+;;
+(writeln (smallest-divisor 199))
+(writeln (smallest-divisor 1999))
+(writeln (smallest-divisor 19999))
+
 
