@@ -7,7 +7,7 @@
 
 (define (search-helper n end)
   (cond ((<= n end) (timed-prime-test n) (search-helper (+ n 2) end))
-        (else (writeln "finished"))))
+        (else (begin (newline) (writeln "finished")))))
 
 (define (timed-prime-test n)
   (newline)
@@ -21,7 +21,7 @@
 
 (define (report-prime elapsed-time)
   (display " *** ")
-  (writeln elapsed-time))
+  (display elapsed-time))
 
 (define (report-nonprime)
   (display ""))
