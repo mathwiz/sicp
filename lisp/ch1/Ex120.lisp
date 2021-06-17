@@ -6,3 +6,6 @@
              (format t "(mod ~D ~D)~%" a b)
              (verbose-gcd b (mod a b))))))
 
+
+;; Testing
+(print (verbose-gcd 206 40))
