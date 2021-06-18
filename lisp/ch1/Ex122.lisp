@@ -11,12 +11,12 @@
 
 
 (defun prime-test (n)
-  (if (prime n)
+  (if (prime? n)
       (format t "~S *** ~%" n)
       (format t "~S ~%" n)))
 
 
-(defun prime (n)
+(defun prime? (n)
   (= n (smallest-divisor n)))
 
 
