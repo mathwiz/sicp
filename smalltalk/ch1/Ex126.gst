@@ -1,32 +1,35 @@
-Object subclass: FastExpt [
-| b exp |
+Object subclass: SmallestDivisor [
+| n |
 
 "initialization"
-setB: a1 Exp: a2 [
-    b := a1.
-    exp := a2.
+setN: a1 [
+    n := a1.
 ]
 
 
 "class methods"
-FastExpt class >> square: aNumber  [
-    ^ aNumber * aNumber.
+SmallestDivisor class >> withN: aNumber  [
+    ^ SmallestDivisor new setN: aNumber.
 ]
 
-FastExpt class >> even: aNumber [
-    ^ 0 == (aNumber rem: 2).
+SmallestDivisor class >> dividesA: a B: b [
+    ^ 0 == (b rem: a).
+]
+
+SmallestDivisor class >> findDivisorForN: n andTest: test [
+    (test * test > n)
+        ifTrue: [ ^ n ].
+
+    (self dividesA: test B: n)
+        ifTrue: [ ^ test ].
+
+    ^ self findDivisorForN: n andTest: test + 1.
 ]
 
 
 "instance methods"
 value [
-    (exp == 0)
-        ifTrue: [ ^ 1 ].
-
-    (self class even: exp)
-        ifTrue: [ ^ self class square: (FastExpt new setB: b Exp: (exp / 2); value) ].
-
-    ^ b * (FastExpt new setB: b Exp: (exp - 1); value).
+    ^ self class findDivisorForN: n andTest: 2.
 ]
 
 ] "end class"
@@ -40,18 +43,7 @@ setStart: a1 End: a2 [
     end := a2.
 ]
 
-
 "class methods"
-PrimeSearch class >> fastExptForB: b Exp: exp [
-    (exp == 0)
-        ifTrue: [ ^ 1 ].
-
-    (self even: exp)
-        ifTrue: [ ^ self square: (self fastExptForB: b Exp: (exp / 2)) ].
-
-    ^ b * (self fastExptForB: b Exp: (exp - 1)).
-]
-
 PrimeSearch class >> isPrime: n [
     | iter |
     iter := [ :times | 
@@ -70,7 +62,12 @@ PrimeSearch class >> fermatTest: n [
 ]
 
 PrimeSearch class >> expmodForBase: base Exp: exp M: m [
-    ^ (self fastExptForB: base Exp: exp) rem: m.
+    ^ (exp == 0)
+        ifTrue: [ 1 ]
+        ifFalse: [ (self even: exp)
+                       ifTrue: [ (self square: (self expmodForBase: base Exp: (exp / 2) M: m)) rem: m ]
+                       ifFalse: [ (base * (self expmodForBase: base Exp: (exp - 1) M: m)) rem: m ]
+        ].
 ]
 
 PrimeSearch class >> even: n [
@@ -111,11 +108,7 @@ searchHelperForN: n andEnd: end [
 
 
 | test |
-"
-(FastExpt new setB: 2 Exp: 8) value displayNl.
-(FastExpt new setB: 3 Exp: 5) value displayNl.
-(FastExpt new setB: 5 Exp: 4) value displayNl.
-"
+
 
 test := (PrimeSearch new setStart: 1000 End: 1020).
 test search.
@@ -128,5 +121,4 @@ test search.
 test := (PrimeSearch new setStart: 100000 End: 100080).
 test search.
 '' displayNl.
-"
-"
+
