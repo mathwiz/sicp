@@ -112,6 +112,8 @@ searchHelperForN: n andEnd: end [
 
 | test |
 (FastExpt new setB: 2 Exp: 8) value displayNl.
+(FastExpt new setB: 3 Exp: 5) value displayNl.
+(FastExpt new setB: 5 Exp: 4) value displayNl.
 
 "
 test := (PrimeSearch new setStart: 1000 End: 1020).
