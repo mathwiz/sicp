@@ -61,11 +61,13 @@ PrimeSearch class >> fermatTest: n [
     ^ try_it value: 1 + ((1 to: (n - 1)) atRandom).
 ]
 
+"Inefficient use of 2 multiplications rather than function to square"
 PrimeSearch class >> expmodForBase: base Exp: exp M: m [
     ^ (exp == 0)
         ifTrue: [ 1 ]
         ifFalse: [ (self even: exp)
-                       ifTrue: [ (self square: (self expmodForBase: base Exp: (exp / 2) M: m)) rem: m ]
+                       ifTrue: [ ( (self expmodForBase: base Exp: (exp / 2) M: m) * 
+                                       (self expmodForBase: base Exp: (exp / 2) M: m) ) rem: m ]
                        ifFalse: [ (base * (self expmodForBase: base Exp: (exp - 1) M: m)) rem: m ]
         ].
 ]
