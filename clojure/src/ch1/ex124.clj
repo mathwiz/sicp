@@ -18,11 +18,11 @@
 
 
 (defn expmod [base exp m]
-  (cond ((= exp 0) 1
-         (not (odd? exp))
-           (rem (square (expmod base (/ exp 2) m)) m)
-         :else 
-           (rem (* base (expmod base (dec exp) m)) m))))
+  (cond (= exp 0) 1
+        (not (odd? exp))
+          (rem (square (expmod base (/ exp 2) m)) m)
+        :else 
+          (rem (* base (expmod base (dec exp) m)) m)))
   
 
 (defn fermat-test [n]
@@ -31,9 +31,9 @@
 
 
 (defn fast-prime? [n times]
-  (cond ((= times 0) true
-         (fermat-test n) (fast-prime? n (dec times))
-         :else false)))
+  (cond (= times 0) true
+        (fermat-test n) (fast-prime? n (dec times))
+        :else false))
 
 
 (defn prime? [n]
