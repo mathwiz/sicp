@@ -23,7 +23,7 @@
         :else (* b (fast-expt b (dec n)))))
 
 
-; Is it slow?
+; Integer overflow?
 (defn expmod [base exp m]
   (rem (fast-expt base exp) m))
   
