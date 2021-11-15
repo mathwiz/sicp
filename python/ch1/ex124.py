@@ -1,4 +1,7 @@
 import unittest
+import random
+
+FAST_TIMES = 2
 
 
 def search_for_primes(start, end):
@@ -22,28 +25,34 @@ def prime_test(n):
 
 
 def prime(n):
-    return n == smallest_divisor(n)
+    return fast_prime(n, FAST_TIMES)
+
+
+def fast_prime(n, times):
+    if times == 0:
+        return True
+    if fermat_test(n):
+        return fast_prime(n, times - 1)
+    return False
+
+
+def fermat_test(n):
+    def try_it(a):
+        return a == expmod(a, n, n)
+    return try_it(random.randint(1, n))
+
+
+def expmod(base, exp, m):
+    if exp == 0:
+        return 1
+    elif not odd(exp):
+        return square(expmod(base, exp/2, m)) % m
+    else:
+        return (base * expmod(base, exp-1, m)) % m
 
 
 def odd(n):
     return n % 2 == 1
-
-
-def smallest_divisor(n):
-    return find_divisor(n, 2)
-
-
-def next(n):
-    return 3 if n == 2 else n + 2
-
-
-def find_divisor(n, test_divisor):
-    if square(test_divisor) > n:
-        return n
-    elif divides(test_divisor, n):
-        return test_divisor
-    else:
-        return find_divisor(n, next(test_divisor))
 
 
 def divides(a, b):
