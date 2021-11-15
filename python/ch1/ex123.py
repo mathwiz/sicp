@@ -5,13 +5,17 @@ def smallest_divisor(n):
     return find_divisor(n, 2)
 
 
+def next(n):
+    return 3 if n == 2 else n + 2
+
+
 def find_divisor(n, test_divisor):
     if square(test_divisor) > n:
         return n
     elif divides(test_divisor, n):
         return test_divisor
     else:
-        return find_divisor(n, test_divisor + 1)
+        return find_divisor(n, next(test_divisor))
 
 
 def divides(a, b):

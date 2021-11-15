@@ -36,6 +36,7 @@ def smallest_divisor(n):
 def next(n):
     return 3 if n == 2 else n + 2
 
+
 def find_divisor(n, test_divisor):
     if square(test_divisor) > n:
         return n
