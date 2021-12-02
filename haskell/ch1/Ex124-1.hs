@@ -14,40 +14,46 @@ sq n = n * n
 
 divides a b = (mod b a) == 0
 
-get_rng = mkStdGen 11
+get_rng seed = mkStdGen seed
 
 rand_nums n = replicateM n (randomRIO (0 :: Double, 1)) 
 
 rand_ints :: Int -> Int -> Int -> IO [Int]
 rand_ints n lo hi = do
-  nums <- replicateM n (randomRIO (lo :: Int, hi)) 
+  nums <- replicateM n (randomRIO (lo :: Int, hi-1)) 
   return nums
 
+rand_int :: Int -> StdGen -> (Int, StdGen)
+rand_int limit gen =
+  let (rawTargetNum, nextGen) = next gen
+  in (rem rawTargetNum limit, nextGen)
  
 find_divisor n test | sq test > n = n
 find_divisor n test | divides test n = test
 find_divisor n test = find_divisor n (test + 1)
 
-expmod :: Integer -> Integer -> Integer -> Integer
+expmod :: Int -> Int -> Int -> Int
 expmod _ 0 _ = 1
 expmod base exp m | even exp = rem (sq (expmod base (div exp 2) m)) m
 expmod base exp m = rem (base * (expmod base (exp - 1) m)) m
 
---Could not figure out random number version
-fermat_test :: Integer -> Bool
-fermat_test n = 
-  let try_it a = (expmod a n n) == a
-  in try_it (n)
 
-fast_prime n 0 = True
-fast_prime n times = 
-  if fermat_test n 
-  then fast_prime n (n - 1)
+fermat_test :: Int -> Int -> Bool
+fermat_test n rnum = 
+  let try_it a = (expmod a n n) == a
+  in try_it (1 + rnum)
+
+fast_prime n 0 _ = True
+fast_prime n times gen =
+  let (rnum, newGen) = rand_int (n-1) gen
+  in
+  if fermat_test n rnum 
+  then fast_prime n (times - 1) newGen
   else False
 
---is_prime n = fast_prime n fast_times
+is_prime n = fast_prime n fast_times (get_rng n)
 --revert to Ex122 version
-is_prime n = (find_divisor n 2) == n
+--is_prime n = (find_divisor n 2) == n
 
 prime_test n | is_prime n = show n ++ " ***"
 prime_test n = show n
