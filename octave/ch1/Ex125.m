@@ -1,4 +1,4 @@
-function Ex124
+function Ex125
   #search_for_primes(1000, 1020);
   search_for_primes(10000, 10040);
   #search_for_primes(100000, 100080);
@@ -59,15 +59,20 @@ function VAL = fast_prime(n, times)
   endif
 endfunction
 
+# This also fails like in other non-lisps
 function VAL = expmod(base, exp, m)
+  VAL = rem(fast_expt(base, exp), m);
+endfunction
+
+function VAL = fast_expt(base, exp)
   even = @(n) rem(n, 2) == 0;
   square = @(n) n * n;
   if exp == 0
     VAL = 1;
   elseif even(exp)
-    VAL = rem(square(expmod(base, exp/2, m)), m);
+    VAL = square(fast_expt(base, exp/2));
   else
-    VAL = rem(base * expmod(base, exp-1, m), m);
+    VAL = base * fast_expt(base, exp-1);
   endif
 endfunction
 
