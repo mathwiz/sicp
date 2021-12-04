@@ -17,7 +17,7 @@ public class Ex123 {
     }
 
     public static int next(int n) {
-        return a == 2 ? 3 : n+2;
+        return n == 2 ? 3 : n+2;
     }
 
     static class SmallestDivisor extends CachedValue<Integer> {
