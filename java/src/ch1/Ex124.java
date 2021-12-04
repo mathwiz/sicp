@@ -94,7 +94,7 @@ public class Ex124 {
         long base;
         long exp;
         long m;
-        ExpMod(int base, int exp, int m) {
+        ExpMod(long base, long exp, long m) {
             this.base = base;
             this.exp = exp;
             this.m = m;
