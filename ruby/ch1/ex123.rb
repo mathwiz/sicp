@@ -1,4 +1,4 @@
-module Ex121
+module Ex123
 
 def divides(a, b)
   0 == b % a
@@ -25,7 +25,7 @@ end
 end
 
 
-include Ex121
+include Ex123
 print "Testing\n"
 print smallest_divisor(199) == 199 , "\n"
 print smallest_divisor(1999) == 1999 , "\n"
