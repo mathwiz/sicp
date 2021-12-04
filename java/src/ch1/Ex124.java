@@ -91,9 +91,9 @@ public class Ex124 {
     }
 
     static class ExpMod implements Value<Integer> {
-        int base;
-        int exp;
-        int m;
+        long base;
+        long exp;
+        long m;
         ExpMod(int base, int exp, int m) {
             this.base = base;
             this.exp = exp;
@@ -105,7 +105,7 @@ public class Ex124 {
             return calc(this.base, this.exp, this.m);
         }
 
-        int calc(int base, int exp, int m) {
+        long calc(long base, long exp, long m) {
             if (exp == 0) {
                 return 1;
             } else if (divides(2, exp)) {
