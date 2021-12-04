@@ -28,7 +28,7 @@ public class Ex124 {
         return fast_prime(n, 3);
     }
 
-    public static boolean fast_prime(long n, int times) {
+    public static boolean fast_prime(int n, int times) {
         if (times == 0)
             return true;
         else if (fermat_test(n))
@@ -40,7 +40,7 @@ public class Ex124 {
     @FunctionalInterface
     interface TryFermat { boolean apply(long n); }
 
-    public static boolean fermat_test(long n) {
+    public static boolean fermat_test(int n) {
         TryFermat f = (long a) -> a == new ExpMod(a, n, n).value();
         return f.apply(1 + random(n-1));
     }
