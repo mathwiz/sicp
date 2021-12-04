@@ -42,12 +42,16 @@ fermat_test <- function(n) {
 }
 
 expmod <- function(base, exp, m) {
+  fast_expt(base, exp) %% m
+}
+
+fast_expt <- function(base, exp) {
   if (exp == 0) {
     1
   } else if (divides(2,exp)) {
-    square(expmod(base, exp/2, m)) %% m
+    square(fast_expt(base, exp/2))
   } else {
-    (base * expmod(base, exp-1, m)) %% m
+    base * fast_expt(base, exp-1)
   }
 }
 
