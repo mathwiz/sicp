@@ -16,7 +16,7 @@ public class Ex124 {
         return !divides(2, n);
     }
 
-    public static int square(long n) {
+    public static long square(long n) {
         return n * n;
     }
 
