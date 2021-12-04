@@ -12,23 +12,23 @@ public class Ex124 {
         System.out.println("done");
     }
 
-    public static boolean odd(int n) {
+    public static boolean odd(long n) {
         return !divides(2, n);
     }
 
-    public static int square(int n) {
+    public static int square(long n) {
         return n * n;
     }
 
-    public static boolean divides(int a, int b) {
+    public static boolean divides(long a, long b) {
         return 0 == b % a;
     }
 
-    public static boolean prime(int n) {
+    public static boolean prime(long n) {
         return fast_prime(n, 3);
     }
 
-    public static boolean fast_prime(int n, int times) {
+    public static boolean fast_prime(long n, int times) {
         if (times == 0)
             return true;
         else if (fermat_test(n))
@@ -38,10 +38,10 @@ public class Ex124 {
     }
 
     @FunctionalInterface
-    interface TryFermat { boolean apply(int n); }
+    interface TryFermat { boolean apply(long n); }
 
-    public static boolean fermat_test(int n) {
-        TryFermat f = (int a) -> a == new ExpMod(a, n, n).value();
+    public static boolean fermat_test(long n) {
+        TryFermat f = (long a) -> a == new ExpMod(a, n, n).value();
         return f.apply(1 + random(n-1));
     }
 
