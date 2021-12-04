@@ -21,11 +21,11 @@ public class Ex124 {
     }
 
     public static boolean prime(int n) {
-        return new SmallestDivisor(n).value() == n;
+        return fast_prime(n, 3);
     }
 
     public static boolean fast_prime(int n, int times) {
-        if (times == o)
+        if (times == 0)
             return true;
         else if (fermat_test(n))
             return fast_prime(n, times-1);
