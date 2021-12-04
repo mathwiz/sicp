@@ -24,7 +24,7 @@ public class Ex124 {
         return 0 == b % a;
     }
 
-    public static boolean prime(long n) {
+    public static boolean prime(int n) {
         return fast_prime(n, 3);
     }
 
