@@ -90,7 +90,7 @@ public class Ex124 {
         }
     }
 
-    static class ExpMod implements Value<Integer> {
+    static class ExpMod implements Value<Long> {
         long base;
         long exp;
         long m;
@@ -101,7 +101,7 @@ public class Ex124 {
         }
 
         @Override
-        public Integer value() {
+        public Long value() {
             return calc(this.base, this.exp, this.m);
         }
 
