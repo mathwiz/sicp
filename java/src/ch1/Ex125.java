@@ -105,6 +105,7 @@ public class Ex125 {
             return calc(this.base, this.exp, this.m);
         }
 
+        // This breaks the algo as in other languages
         long calc(long base, long exp, long m) {
             return fast_expt(base, exp) % m;
         }
