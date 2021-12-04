@@ -106,6 +106,7 @@ public class Ex126 {
         }
 
         // Inefficiently call funciton twice instead of using square function
+        // Also breaks algo. Why?
         long calc(long base, long exp, long m) {
             if (exp == 0) {
                 return 1;
