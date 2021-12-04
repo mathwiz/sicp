@@ -37,7 +37,7 @@ public class Ex124 {
     interface TryFermat { boolean apply(int n); }
 
     public static boolean fermat_test(int n) {
-        TryFermat f = (int a) -> a == new ExpMod(a, n, n);
+        TryFermat f = (int a) -> a == new ExpMod(a, n, n).value();
         return f.apply(1 + random(n-1));
     }
 
