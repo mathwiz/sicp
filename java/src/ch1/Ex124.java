@@ -12,6 +12,10 @@ public class Ex124 {
         System.out.println("done");
     }
 
+    public static boolean odd(int n) {
+        return !divides(2, n);
+    }
+
     public static int square(int n) {
         return n * n;
     }
