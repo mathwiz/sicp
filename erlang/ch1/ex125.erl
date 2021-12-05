@@ -53,7 +53,7 @@ fast_expt(Base, Exp) ->
     false -> Base * fast_expt(Base, Exp - 1)
   end.
 
-%% Does this break?
+%% Does this break it? Sure does.
 expmod(Base, Exp, M) ->
   fast_expt(Base, Exp) rem M.
 
