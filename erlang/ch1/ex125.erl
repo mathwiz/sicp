@@ -53,6 +53,7 @@ fast_expt(Base, Exp) ->
       case even(Exp) of
         true -> square(fast_expt(Base, Exp div 2));
         false -> Base * fast_expt(Base, Exp - 1)
+      end.
   end.
 
 %% Does this break?
