@@ -36,6 +36,7 @@ defmodule Ex125 do
     try_it.(1 + random(n - 1)) 
   end
 
+  # Now broken. Overflow?
   def expmod(base, exp, m) do
     rem(fast_expt(base, div(exp, 2)), m)
   end
