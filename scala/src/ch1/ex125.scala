@@ -30,8 +30,8 @@ def expmod(base: BigInt, exp: Int, m: BigInt): BigInt = fast_expt(base, exp) % m
 
 def fast_expt(base: BigInt, exp: Int): BigInt = exp match {
   case 0 => BigInt(1)
-  case _ if divides(2, exp) => square(expmod(base, exp/2))
-  case _ => base * expmod(base, exp-1)
+  case _ if divides(2, exp) => square(fast_expt(base, exp/2))
+  case _ => base * fast_expt(base, exp-1)
 }
 
 def square(n: BigInt): BigInt = n * n
