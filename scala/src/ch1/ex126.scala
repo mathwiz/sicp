@@ -29,7 +29,7 @@ def fermat_test(n: Int) : Boolean = {
 // Inefficiently use 2 function calls instead of calling square
 def expmod(base: BigInt, exp: Int, m: BigInt): BigInt = exp match {
   case 0 => BigInt(1)
-  case _ if divides(2, exp) => (expmod(base, exp/2, m) * expmod(base, exp/2, m) % m
+  case _ if divides(2, exp) => (expmod(base, exp/2, m) * expmod(base, exp/2, m)) % m
   case _ => ((base * expmod(base, exp-1, m)) % m)
 }
 
