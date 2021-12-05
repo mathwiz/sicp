@@ -28,7 +28,7 @@ find_divisor(N, Test) when Test * Test > N -> N;
 find_divisor(N, Test) ->
   if
     N rem Test == 0 -> Test;
-    true -> find_divisor(N, Test + 1)
+    true -> find_divisor(N, next(Test))
   end.
 
 next(2) -> 3;
