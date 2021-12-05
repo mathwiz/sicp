@@ -13,7 +13,7 @@ def find_divisor(n: Int, test: Int): Int = test match {
 }
 
 //def prime(n: Int) = n == smallest_divisor(n)
-def prime(n: Int) = n == fast_prime(n, 3)
+def prime(n: Int) = fast_prime(n, 3)
 
 def fast_prime(n: Int, times: Int): Boolean = times match {
   case 0 => true
