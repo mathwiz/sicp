@@ -46,16 +46,16 @@ random(Limit) -> rand:uniform(Limit) - 1.
 
 even(N) -> N rem 2 == 0.
 
-%% Does this break?
-expmod(Base, Exp, M) ->
-  fast_expt(Base, Exp) rem M.
-
 fast_expt(_, 0, _) -> 1;
 fast_expt(Base, Exp) ->
   case even(Exp) of
     true -> square(fast_expt(Base, Exp div 2));
     false -> Base * fast_expt(Base, Exp - 1)
   end.
+
+%% Does this break?
+expmod(Base, Exp, M) ->
+  fast_expt(Base, Exp) rem M.
 
 fermat_test(N) ->
   TryIt = fun (A) -> expmod(A, N, N) == A end,
