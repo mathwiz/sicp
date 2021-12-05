@@ -2,7 +2,7 @@
 
 import java.util.Random
 
-def divides(a: Int, b: Int): Boolean = b % a == 0
+def divides(a: Long, b: Long): Boolean = b % a == 0
 
 def smallest_divisor(n: Int): Int = find_divisor(n, 2)
 
