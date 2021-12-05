@@ -28,7 +28,7 @@ def fermat_test(n: Int) : Boolean = {
 
 def expmod(base: Int, exp: Int, m: Int): Int = exp match {
   case 0 => 1
-  case _ if divides(2, exp) => (square(expmod(base, exp/2, m)) % m).asInstanceOf[Int]
+  case _ if divides(2, exp) => (square(expmod(base, exp/2, m)) % m)
   case _ => (base * expmod(base, exp-1, m)) % m
 }
 
