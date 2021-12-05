@@ -37,8 +37,13 @@ defmodule Ex124 do
   end
 
   def expmod(_, 0, _), do: 1
-  def expmod(base, exp, m) when divides(2, exp), do: rem(sq(expmod(base, div(exp, 2), m)), m)
-  def expmod(base, exp, m), do: rem(base * expmod(base, exp-1, m), m)
+  def expmod(base, exp, m) do
+    if divides(2, exp) do
+      rem(sq(expmod(base, div(exp, 2), m)), m)
+    else
+      rem(base * expmod(base, exp-1, m), m)
+    end
+  end
 
   def random(limit), do: :rand.uniform(limit) - 1
 
