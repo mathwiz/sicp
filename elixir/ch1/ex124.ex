@@ -33,7 +33,7 @@ defmodule Ex124 do
 
   def fermat_test(n) do
     try_it = fn (a) -> a == expmod(a, n, n) end
-    try_it(1 + random(n - 1)) 
+    try_it.(1 + random(n - 1)) 
   end
 
   def expmod(_, 0, _), do: 1
