@@ -43,7 +43,7 @@ defmodule Ex124 do
   def fast_expt(_, 0), do: 1
   def fast_expt(base, exp) do
     if divides?(2, exp) do
-      sq(fast_expt(base, div(exp, 2))
+      sq(fast_expt(base, div(exp, 2)))
     else
       base * fast_expt(base, exp-1)
     end
