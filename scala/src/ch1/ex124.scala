@@ -15,7 +15,8 @@ def prime(n: Int) = n == fast_prime(n, 3)
 
 def fast_prime(n: Long, times: Int): Boolean = times match {
   case 0 => true
-  case _ => fermat_test(n) ? fast_prime(n, times-1) : false
+  case _ if fermat_test(n) => fast_prime(n, times-1)
+  case _ => false
 }
 
 def fermat_test(n: Int) : Boolean = {
