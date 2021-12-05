@@ -23,8 +23,13 @@ defmodule Ex124 do
   def prime?(n), do: fast_prime(n, 3)
 
   def fast_prime(_, 0), do: true
-  def fast_prime(n, times) when fermat_test(n), do: fast_prime(n, times-1)
-  def fast_prime(_, _), do: false
+  def fast_prime(n, times) do
+    if fermat_test(n) do
+      fast_prime(n, times-1)
+    else
+      false
+    end
+  end
 
   def fermat_test(n) do
     def try_it(a), do: a == expmod(a, n, n)
