@@ -22,17 +22,17 @@ def fast_prime(n: Int, times: Int): Boolean = times match {
 }
 
 def fermat_test(n: Int) : Boolean = {
-  val try_it = (a: Int) => expmod(a, n, n) == a
+  val try_it = (a: Int) => a == expmod(a, n, n)
   try_it(1 + random(n-1))
 }
 
 def expmod(base: Int, exp: Int, m: Int): Int = exp match {
   case 0 => 1
-  case _ if divides(2, exp) => (square(expmod(base, exp/2, m)) % m.asInstanceOf[Long]).asInstanceOf[Int]
-  case _ => (base * expmod(base, exp-1, m)) % m
+  case _ if divides(2, exp) => (square(expmod(base, exp/2, m)) % m).asInstanceOf[Int]
+  case _ => ((base * expmod(base, exp-1, m)) % m).asInstanceOf[Int]
 }
 
-def square(n: Int): Long = n.asInstanceOf[Long] * n.asInstanceOf[Long]
+def square(n: Int): BigInt = BigInt(n) * BigInt(n)
 
 def random(limit: Int): Int = {
   new Random().nextInt(limit)
