@@ -22,8 +22,8 @@ def fast_prime(n: Int, times: Int): Boolean = times match {
 }
 
 def fermat_test(n: Int) : Boolean = {
-  val try_it = (a) => a == expmod(a, n, n)
-  try_it(BigInt(1 + random(n-1)))
+  val try_it = (a: Int) => a == expmod(a, n, n)
+  try_it(1 + random(n-1))
 }
 
 def expmod(base: BigInt, exp: Int, m: BigInt): BigInt = exp match {
