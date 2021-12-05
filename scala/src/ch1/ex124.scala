@@ -2,7 +2,7 @@
 
 import java.util.Random
 
-def divides(a: Long, b: Long): Boolean = b % a == 0
+def divides(a: BigInt, b: BigInt): Boolean = b % a == 0
 
 def smallest_divisor(n: Int): Int = find_divisor(n, 2)
 
@@ -22,17 +22,17 @@ def fast_prime(n: Int, times: Int): Boolean = times match {
 }
 
 def fermat_test(n: Int) : Boolean = {
-  val try_it = (a: Int) => a == expmod(a, n, n)
-  try_it(1 + random(n-1))
+  val try_it = (a) => a == expmod(a, n, n)
+  try_it(BigInt(1 + random(n-1)))
 }
 
-def expmod(base: Long, exp: Long, m: Long): Long = exp match {
+def expmod(base: BigInt, exp: BigInt, m: BigInt): BigInt = exp match {
   case 0 => 1
-  case _ if divides(2, exp) => (square(expmod(base, exp/2, m)) % m).toLong
+  case _ if divides(2, exp) => (square(expmod(base, exp/2, m)) % m)
   case _ => ((base * expmod(base, exp-1, m)) % m)
 }
 
-def square(n: Long): BigInt = BigInt(n) * BigInt(n)
+def square(n: BigInt): BigInt = n * n
 
 def random(limit: Int): Int = {
   new Random().nextInt(limit)
