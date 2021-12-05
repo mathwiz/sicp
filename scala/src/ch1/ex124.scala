@@ -1,5 +1,7 @@
 // run with> scala exXXX.scala
 
+import java.util.Random
+
 def divides(a: Int, b: Int): Boolean = b % a == 0
 
 def smallest_divisor(n: Int): Int = find_divisor(n, 2)
@@ -13,7 +15,7 @@ def find_divisor(n: Int, test: Int): Int = test match {
 //def prime(n: Int) = n == smallest_divisor(n)
 def prime(n: Int) = n == fast_prime(n, 3)
 
-def fast_prime(n: Long, times: Int): Boolean = times match {
+def fast_prime(n: Int, times: Int): Boolean = times match {
   case 0 => true
   case _ if fermat_test(n) => fast_prime(n, times-1)
   case _ => false
@@ -26,11 +28,11 @@ def fermat_test(n: Int) : Boolean = {
 
 def expmod(base: Int, exp: Int, m: Int): Int = exp match {
   case 0 => 1
-  case _ if divides(2, exp) => (square(expmod(base, exp/2, m)) % m).asInstanceOf(Int)
+  case _ if divides(2, exp) => (square(expmod(base, exp/2, m)) % m).asInstanceOf[Int]
   case _ => (base * expmod(base, exp-1, m)) % m
 }
 
-def square(n: Int): Long = n.asInstanceOf(Long) * n.asInstanceOf(Long)
+def square(n: Int): Long = n.asInstanceOf[Long] * n.asInstanceOf[Long]
 
 def random(limit: Int): Int = {
   new Random().nextInt(limit)
