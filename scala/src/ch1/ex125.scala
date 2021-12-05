@@ -26,9 +26,7 @@ def fermat_test(n: Int) : Boolean = {
   try_it(1 + random(n-1))
 }
 
-def expmod(base: BigInt, exp: Int, m: BigInt): BigInt = exp match {
-  fast_expt(base, exp) % m
-}
+def expmod(base: BigInt, exp: Int, m: BigInt): BigInt = fast_expt(base, exp) % m
 
 def fast_expt(base: BigInt, exp: Int): BigInt = exp match {
   case 0 => BigInt(1)
