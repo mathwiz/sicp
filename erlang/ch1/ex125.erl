@@ -48,7 +48,7 @@ even(N) -> N rem 2 == 0.
 
 fast_expt(Base, Exp) ->
   case Exp of
-    Exp == 0 -> 1;
+    0 -> 1;
     even(Exp) -> square(fast_expt(Base, Exp div 2));
     false -> Base * fast_expt(Base, Exp - 1)
   end.
