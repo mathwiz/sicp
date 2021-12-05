@@ -53,8 +53,8 @@ expmod(Base, Exp, M) ->
 fast_expt(_, 0, _) -> 1;
 fast_expt(Base, Exp) ->
   case even(Exp) of
-    true -> square(expmod(Base, Exp div 2, M));
-    false -> Base * expmod(Base, Exp - 1, M)
+    true -> square(fast_expt(Base, Exp div 2));
+    false -> Base * fast_expt(Base, Exp - 1
   end.
 
 fermat_test(N) ->
