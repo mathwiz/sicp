@@ -38,7 +38,7 @@ defmodule Ex124 do
 
   def expmod(_, 0, _), do: 1
   def expmod(base, exp, m) do
-    if divides(2, exp) do
+    if divides?(2, exp) do
       rem(sq(expmod(base, div(exp, 2), m)), m)
     else
       rem(base * expmod(base, exp-1, m), m)
