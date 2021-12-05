@@ -48,7 +48,7 @@ even(N) -> N rem 2 == 0.
 
 expmod(_, 0, _) -> 1;
 expmod(Base, Exp, M) ->
-  case even(N) of
+  case even(Exp) of
     true -> square(expmod(Base, Exp div 2, M)) rem M;
     false -> Base * expmod(Base, Exp - 1, M) rem M
   end.
