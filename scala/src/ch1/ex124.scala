@@ -26,13 +26,13 @@ def fermat_test(n: Int) : Boolean = {
   try_it(1 + random(n-1))
 }
 
-def expmod(base: Int, exp: Int, m: Int): Int = exp match {
+def expmod(base: Long, exp: Long, m: Long): Long = exp match {
   case 0 => 1
-  case _ if divides(2, exp) => (square(expmod(base, exp/2, m)) % m).toInt
-  case _ => ((base * expmod(base, exp-1, m)) % m).toInt
+  case _ if divides(2, exp) => (square(expmod(base, exp/2, m)) % m).toLong
+  case _ => ((base * expmod(base, exp-1, m)) % m)
 }
 
-def square(n: Int): BigInt = BigInt(n) * BigInt(n)
+def square(n: Long): BigInt = BigInt(n) * BigInt(n)
 
 def random(limit: Int): Int = {
   new Random().nextInt(limit)
