@@ -1,7 +1,7 @@
 # cd("c:/Users/Yohan/IdeaProjects/sicp/elixir/ch1")
 # Load with import_file("filename")
 # Run with Module.func(args)
-defmodule Ex124 do
+defmodule Ex125 do
   @moduledoc false
 
   def sq(x), do: x * x
