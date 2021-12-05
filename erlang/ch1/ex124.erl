@@ -37,7 +37,7 @@ fast_prime(_, 0) -> true;
 fast_prime(N, Times) ->
   if
     fermat_test(N) -> fast_prime(N, Times-1);
-    true -> false.
+    true -> false
   end.
 
 square(N) -> N * N.
@@ -50,7 +50,7 @@ expmod(_, 0, _) -> 1;
 expmod(Base, Exp, M) ->
   if
     even(N) -> square(expmod(Base, Exp div 2, M)) rem M;
-    true -> Base * expmod(Base, Exp - 1, M) rem M.
+    true -> Base * expmod(Base, Exp - 1, M) rem M
   end.
 
 fermat_test(N) ->
