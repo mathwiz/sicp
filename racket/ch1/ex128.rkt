@@ -8,6 +8,21 @@
         (else
          (remainder (* base (expmod base (- exp 1) m)) m))))
 
+(define (miller-rabin-expmod base exp m)
+  (define (non-trivial-square-root x square)
+       (if (and (= square 1) 
+                (not (= x 1)) 
+                (not (= x (- m 1)))) 
+           0 
+           square))
+  (define (squaremod-with-check x)
+    (non-trivial-square-root x (remainder (square x) m)))
+  (cond ((= exp 0) 1)
+        ((even? exp)
+         (squaremod-with-check (miller-rabin-expmod base (/ exp 2) m)))
+        (else
+         (remainder (* base (miller-rabin-expmod base (- exp 1) m)) m))))
+
 (define (fermat-test n)
   (define (try-it a)
     (= (expmod a n n) a))
@@ -15,12 +30,9 @@
 
 (define (miller-rabin-test n)
   (define (try-it a)
-    (= (expmod a n n) a))
-  (define (iter x)
-    (cond ((= 0 x) #f)
-          ((try-it x) (iter (sub1 x)))
-          (else x)))
-  (iter (sub1 n)))
+    (let ((result (miller-rabin-expmod a (sub1 n) n)))
+      (or (= result 0) (= result 1))))
+      (try-it (+ 1 (random (- n 1)))))
 
 (define (prime? n)
   (= n (smallest-divisor n)))
