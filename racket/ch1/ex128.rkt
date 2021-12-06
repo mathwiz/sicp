@@ -13,14 +13,14 @@
     (= (expmod a n n) a))
   (try-it (+ 1 (random (- n 1)))))
 
-(define (carmichael-num n)
+(define (miller-rabin-test n)
   (define (try-it a)
     (= (expmod a n n) a))
   (define (iter x)
-    (cond ((= 0 x) #t)
+    (cond ((= 0 x) #f)
           ((try-it x) (iter (sub1 x)))
-          (else #f)))
-  (and (not (prime? n)) (iter (sub1 n))))
+          (else x)))
+  (iter (sub1 n)))
 
 (define (prime? n)
   (= n (smallest-divisor n)))
@@ -42,20 +42,23 @@
 
 ;; usage: racket filename.rkt
 ;;
-(define (carmichael-test n)
+(define (my-test n)
   (writeln n)
   (writeln (prime? n))
-  (writeln (carmichael-num n)))
+  (writeln (fermat-test n))
+  (writeln (miller-rabin-test n))
+  (writeln 'done))
 
-(carmichael-test 10)
-(carmichael-test 11)
-(carmichael-test 561)
-;; more to try 1105, 1729, 2465, 2821, 6601
-(carmichael-test 1105)
-(carmichael-test 1729)
-(carmichael-test 2465)
-(carmichael-test 2821)
-(carmichael-test 6601)
-(carmichael-test 6603)
+(my-test 10)
+(my-test 11)
+;; Carmichael numbers 561, 1105, 1729, 2465, 2821, 6601
+(my-test 561)
+(my-test 1105)
+(my-test 1729)
+(my-test 2465)
+(my-test 2821)
+(my-test 6601)
+;; A non-prime
+(my-test 6603)
 
 
