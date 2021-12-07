@@ -18,7 +18,7 @@
   (labels ((try-it (a)
              (= (expmod a n n) a))
            (iter (x)
-             (cond ((= 0 x) 't)
+             (cond ((= 0 x) t)
                    ((try-it x) (iter (1- x)))
                    (t nil))))
     (and (not (prime? n)) (iter (1- n)))))
