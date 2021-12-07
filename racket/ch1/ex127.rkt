@@ -56,6 +56,7 @@
 (carmichael-test 2465)
 (carmichael-test 2821)
 (carmichael-test 6601)
+;; non carmichael
 (carmichael-test 6603)
 
 
