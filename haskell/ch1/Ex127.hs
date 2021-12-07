@@ -43,12 +43,11 @@ fast_prime n times gen =
   then fast_prime n (times - 1) newGen
   else False
 
--- Don't know why this is broken
 carmichael_num :: Int -> Bool
 carmichael_num n =
   let try_it a = (expmod a n n) == a
       iter x = if x == 0 then True
-               else if try_it x then iter (n-1)
+               else if try_it x then iter (x-1)
                else False 
   in and [not $ is_prime n, iter (n-1)]
   
