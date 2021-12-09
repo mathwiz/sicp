@@ -1,5 +1,4 @@
 function Ex127
-  max_recursion_depth(2000);
   test_case(10);
   test_case(11);
   test_case(17);
