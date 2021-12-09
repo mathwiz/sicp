@@ -1,11 +1,10 @@
 function Ex127
+  max_recursion_depth(2000);
   test_case(10);
   test_case(11);
-  test_case(97);
+  test_case(17);
   test_case(561);
   test_case(1729);
-  test_case(6601);
-  test_case(6603);
   printf("done\n");
 endfunction
 
@@ -30,24 +29,37 @@ function VAL = smallest_divisor(n)
   VAL = find_divisor(n, 2);
 endfunction
 
-# Don't know why this is broken
-function VAL = expmod_check(x, n) 
-  if x == 0
-    VAL = 1;
-  elseif expmod(x, n, n) == x
-    VAL = expmod_check(x-1, n);
-  else
-    VAL = 0;
-  end
-endfunction
-
-function VAL = carmichael_num(n)
-  VAL = expmod(n-1, n, n);
-endfunction
-
 function VAL = prime(n)
   VAL = n == smallest_divisor(n);
   ## VAL = fast_prime(n, 3);
+endfunction
+
+function VAL = eq_expmod(base, exp)
+  VAL = expmod(base, exp, exp) == base;
+endfunction
+
+# recusrion depth problem with recursive call
+# replace with iterative solution
+function VAL = carmichael_num(n)
+  try_it = @(a) expmod(a, n, n) == a;
+  if prime(n)
+    VAL = 0;
+  else
+    for i = n-1 : -1 : 0
+      if i == 0
+        VAL = 1;
+        return;
+      elseif  !try_it(i)
+        VAL = 0;
+        return;
+      end
+    endfor
+  end
+endfunction
+
+function VAL = fermat_test(n)
+  try_it = @(a) expmod(a, n, n) == a;
+  VAL = try_it(1 + random(n-1));
 endfunction
 
 function VAL = fast_prime(n, times)
@@ -70,11 +82,6 @@ function VAL = expmod(base, exp, m)
   else
     VAL = rem(base * expmod(base, exp-1, m), m);
   endif
-endfunction
-
-function VAL = fermat_test(n)
-  try_it = @(a) expmod(a, n, n) == a;
-  VAL = try_it(1 + random(n-1));
 endfunction
 
 function VAL = random(limit)
