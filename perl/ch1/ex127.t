@@ -120,6 +120,7 @@ sub test_case {
 
 test_case(9);
 test_case(10);
+test_case(99);
 test_case(11);
 test_case(13);
 test_case(97);
