@@ -112,8 +112,8 @@ sub test_case {
     my ($n) = @_;
     my $p = is_prime($n) ? 1 : 0;
     my $fp = fast_prime($n, $fast_times) ? 1 : 0;
-    my $mr = carmichael_num($n) ? 1 : 0;
-    printf("%d \t Prime: %s \t Fast Prime: %s \t Carmichael: %s\n", $n, $p, $fp, $mr);
+    my $cn = carmichael_num($n) ? 1 : 0;
+    printf("%d \t Prime: %s \t Fast Prime: %s \t Carmichael Num: %s\n", $n, $p, $fp, $cn);
 }
 
 
