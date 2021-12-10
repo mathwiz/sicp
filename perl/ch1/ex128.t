@@ -5,7 +5,7 @@ use Test::More;
 use feature qw(say);
 use POSIX qw/floor/;
 
-my $fast_times = 64;
+my $fast_times = 32;
 
 sub divides {
     my ($a, $b) = @_;
@@ -90,30 +90,58 @@ sub eq_expmod {
     return $a == expmod($a, $n, $n);
 }
 
-sub car_helper {
-    my ($n) = @_;
-    for (my $i = $n; $i >= 0; $i--) {
-        if ($i == 0) {
-            return 1;
-        } elsif (not eq_expmod($i, $n+1)) {
-            return 0;
-        }
+sub fast_miller_rabin {
+    my ($n, $times) = @_;
+    if ($times == 0) {
+        return 1;
     }
-    return 0;
+    elsif (miller_rabin_test($n)) {
+        return fast_miller_rabin($n, $times-1);
+    }
+    else {
+        return 0;
+    }
 }
 
-# cannot handle deep recursion
-sub carmichael_num {
-    my ($num) = @_;
-    return (not is_prime($num)) && car_helper($num-1);
+sub non_trivial_square_root {
+    my ($x, $square, $modulus) = @_;
+    my $result = ($square == 1) && ($x != 1) && ($x != ($modulus-1));
+    return $result ? 0 : $square;
 }
+
+sub miller_rabin_expmod {
+    my ($base, $exp, $m) = @_;
+    my $check_it = sub { 
+        my ($x) = @_;
+        return non_trivial_square_root($x, sq($x) % $m, $m);
+    };
+    if ($exp == 0) {
+        return 1;
+    }
+    elsif (even($exp)) {
+        return $check_it->(miller_rabin_expmod($base, $exp/2, $m));
+    }
+    else {
+        return ($base * miller_rabin_expmod($base, $exp-1, $m)) % $m;
+    }
+}
+
+sub miller_rabin_test {
+    my ($n) = @_;
+    my $try_it = sub { 
+        my ($a) = @_;
+        return 1 == miller_rabin_expmod($a, $n-1, $n);
+    };
+    return $try_it->(1 + random($n-1));
+}
+
 
 sub test_case {
     my ($n) = @_;
     my $p = is_prime($n) ? 1 : 0;
     my $fp = fast_prime($n, $fast_times) ? 1 : 0;
-    my $cn = carmichael_num($n) ? 1 : 0;
-    printf("%d \t Prime: %s \t Fast Prime: %s \t Carmichael Num: %s\n", $n, $p, $fp, $cn);
+    my $mr = fast_miller_rabin($n, $fast_times) ? 1 : 0;
+    printf("%d \t Prime: %s \t Fast Prime: %s \t Miller-Rabin: %s\n", $n, $p, $fp, $mr);
 }
 
 
