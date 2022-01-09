@@ -70,7 +70,12 @@ public class Ex127 {
         final Function<Integer, Boolean> try_it = a -> a == expmod(a, n, n);
         final Function<Integer, Boolean> iter = new Function<Integer, Boolean>() {
             public Boolean apply(Integer x) {    
-                return x == 0 ? true : (try_it.apply(x) ? this.apply(x-1) : false);
+                if (x == 0) 
+                    return true;
+                else if(try_it.apply(x))
+                    return this.apply(x-1)
+                else
+                    return false;
             }
         };
         return !prime(n) && iter.apply(n-1);
