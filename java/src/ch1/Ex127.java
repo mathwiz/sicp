@@ -68,8 +68,8 @@ public class Ex127 {
 
     static boolean carmichael(int n) {
         Function<Integer, Boolean> try_it = a -> a == expmod(a, n, n);
-        Function<Integer, Boolean> iter = null;
-        {
+        Function<Integer, Boolean> iter;
+        static {
             iter = x -> 
                 x == 0 && 
                 try_it.apply(x) ? iter.apply(n-1) : false;
