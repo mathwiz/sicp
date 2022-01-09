@@ -72,8 +72,8 @@ public class Ex127 {
             public Boolean apply(Integer x) {    
                 if (x == 0) 
                     return true;
-                else if(try_it.apply(x))
-                    return this.apply(x-1)
+                else if (try_it.apply(x))
+                    return this.apply(x-1);
                 else
                     return false;
             }
