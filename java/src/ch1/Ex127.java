@@ -5,15 +5,15 @@ import java.util.function.*;
 
 public class Ex127 {
     public static void main(String[] args) {
-        System.out.println(test_case(10);
-        System.out.println(test_case(11);
-        System.out.println(test_case(561);
-        System.out.println(test_case(1105);
-        System.out.println(test_case(1729);
-        System.out.println(test_case(2465);
-        System.out.println(test_case(2821);
-        System.out.println(test_case(6601);
-        System.out.println(test_case(6603);
+        System.out.println(test_case(10));
+        System.out.println(test_case(11));
+        System.out.println(test_case(561));
+        System.out.println(test_case(1105));
+        System.out.println(test_case(1729));
+        System.out.println(test_case(2465));
+        System.out.println(test_case(2821));
+        System.out.println(test_case(6601));
+        System.out.println(test_case(6603));
 
         System.out.println("done");
     }
