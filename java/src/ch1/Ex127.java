@@ -63,13 +63,13 @@ public class Ex127 {
     }
 
     static boolean fermat_test(int n) {
-        Function<Integer, Boolean> f = (int a) -> a == expmod(a, n, n);
+        Function<Integer, Boolean> f = (Integer a) -> a == expmod(a, n, n);
         return f.apply(1 + random(n-1));
     }
 
     static boolean carmichael(int n) {
-        Function<Integer, Boolean> try_it = (int a) -> a == expmod(a, n, n);
-        Function<Integer, Boolean> iter = (int x) ->
+        Function<Integer, Boolean> try_it = (Integer a) -> a == expmod(a, n, n);
+        Function<Integer, Boolean> iter = (Integer x) ->
             x == 0 && try_it.apply(x) ? iter(n-1) : false;
         return !prime(n) && iter.apply(n-1);
     }
