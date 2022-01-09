@@ -67,10 +67,10 @@ public class Ex127 {
         return f.apply(1 + random(n-1));
     }
 
-    static boolean carmichaal(int n) {
+    static boolean carmichael(int n) {
         Function<Integer, Long> try_it = (int a) -> a == expmod(a, n, n);
         Function<Integer, Long> iter = (int x) ->
-            x == 0 && try_it(x) ? iter(n-1) : false;
+            x == 0 && try_it.apply(x) ? iter(n-1) : false;
         return !prime(n) && iter.apply(n-1);
     }
 
