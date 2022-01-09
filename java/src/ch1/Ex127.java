@@ -70,7 +70,7 @@ public class Ex127 {
     static boolean carmichael(int n) {
         Function<Integer, Boolean> try_it = (Integer a) -> a == expmod(a, n, n);
         Function<Integer, Boolean> iter = (Integer x) ->
-            x == 0 && try_it.apply(x) ? iter(n-1) : false;
+            x == 0 && try_it.apply(x) ? iter.apply(n-1) : false;
         return !prime(n) && iter.apply(n-1);
     }
 
