@@ -19,7 +19,7 @@ public class Ex127 {
     }
 
     static String test_case(int n) {
-        return String.format("{0} \t Prime: {1} \t Fast Prime: {2} \t Carmichael: {3}", 
+        return String.format("%d \t Prime: %s \t Fast Prime: %s \t Carmichael: %s", 
                              n, prime(n), fast_prime(n), carmichael(n));
     }
 
