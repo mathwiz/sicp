@@ -68,7 +68,7 @@ public class Ex127 {
 
     static boolean carmichael(int n) {
         Function<Integer, Boolean> try_it = a -> a == expmod(a, n, n);
-        Function<Integer, Boolean> iter;
+        Function<Integer, Boolean> iter = null;
         {
             iter = x -> 
                 x == 0 && 
