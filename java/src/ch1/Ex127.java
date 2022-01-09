@@ -66,18 +66,14 @@ public class Ex127 {
         return f.apply(1 + random(n-1));
     }
 
-    static boolean carmichael_iter(int n) {
-        final Function<Integer, Boolean> try_it = a -> a == expmod(a, n, n);
-        return 
-            x == 0 && 
-            try_it.apply(n) ? carmichael_iter(n-1) : false;
-    }
-
     static boolean carmichael(int n) {
-        static final Function<Integer, Boolean> try_it = a -> a == expmod(a, n, n);
-        static final Function<Integer, Boolean> iter = x -> 
-            x == 0 && try_it.apply(x) ? Ex127.iter(x-1) : false;
-        return !prime(n) && Ex127.iter(n-1);
+        final Function<Integer, Boolean> try_it = a -> a == expmod(a, n, n);
+        final Function<Integer, Boolean> iter = new Function() {
+            Boolean apply(Integer x) {    
+                return x == 0 && try_it.apply(x) ? this.apply(x-1) : false;
+            }
+        };
+        return !prime(n) && iter.apply(n-1);
     }
 
     static int random(int limit) {
