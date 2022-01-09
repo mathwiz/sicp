@@ -2,7 +2,7 @@ package ch1;
 
 import java.util.Date;
 import java.util.Random;
-
+import java.util.function.*;
 
 public class Ex127 {
     public static void main(String[] args) {
