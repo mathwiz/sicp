@@ -69,6 +69,7 @@ public class Ex127 {
     static boolean carmichael(int n) {
         final Function<Integer, Boolean> try_it = a -> a == expmod(a, n, n);
         final Function<Integer, Boolean> iter = new Function<Integer, Boolean>() {
+            @Override
             Boolean apply(Integer x) {    
                 return x == 0 && try_it.apply(x) ? this.apply(x-1) : false;
             }
