@@ -16,6 +16,7 @@ public class Ex127 {
         // System.out.println(test_case(6601));
         // System.out.println(test_case(6603));
         System.out.println(carmichael2(6603));
+        System.out.println(carmichael2(2821));
         System.out.println("done");
     }
 
