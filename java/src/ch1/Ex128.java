@@ -3,7 +3,7 @@ package ch1;
 import java.util.*;
 import java.util.function.*;
 
-public class Ex127 {
+public class Ex128 {
     public static void main(String[] args) {
         System.out.println(test_case(10));
         System.out.println(test_case(11));
