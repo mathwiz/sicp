@@ -19,7 +19,7 @@ public class Ex128 {
 
     static String test_case(int n) {
         return String.format("%d \t Prime: %s \t Fast Prime: %s \t Carmichael: %s", 
-                             n, prime(n), fast_prime(n), carmichael(n));
+                             n, prime.apply(n), fast_prime(n), carmichael(n));
     }
 
     static long expmod(long base, long exp, long m) {
@@ -31,11 +31,14 @@ public class Ex128 {
             return (base * expmod(base, exp-1, m)) % m;
     }
 
-    static Function<Integer, Integer> random = limit -> new Random().nextInt(limit);
+    static Function<Integer, Integer> random = limit -> 
+        new Random().nextInt(limit);
 
-    static Function<Long, Long> square = n -> n * n;
+    static Function<Long, Long> square = n -> 
+        n * n;
 
-    static BiFunction<Long, Long, Boolean> divides = (a, b) -> 0 == b % a;
+    static BiFunction<Long, Long, Boolean> divides = (a, b) -> 
+        0 == b % a;
 
     static BiFunction<Long, Long, Long> find_divisor;
     static {
@@ -44,22 +47,12 @@ public class Ex128 {
         n : 
         divides.apply(test, n) ? test : find_divisor.apply(n, test+1);
     }
-    static long find_divisor_old(long n, long test) {
-        if (square.apply(test) > n)
-            return n;
-        else if (divides.apply(test, n))
-            return test;
-        else
-            return find_divisor_old(n, test+1);
-    }
 
-    static long smallest_divisor(long n) {
-        return find_divisor.apply(n, 2L);
-    }
+    static Function<Long, Long> smallest_divisor = n -> 
+        find_divisor.apply(n, 2L);
 
-    static boolean prime(int n) {
-        return n == smallest_divisor(n);
-    }
+    static Function<Integer, Boolean> prime = n ->
+        n == smallest_divisor.apply(n);
 
     static boolean fast_prime(int n) {
         return fast_prime(n, 20);
