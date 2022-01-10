@@ -15,7 +15,7 @@ public class Ex127 {
         // These are too big???
         // System.out.println(test_case(6601));
         // System.out.println(test_case(6603));
-
+        System.out.println(carmichael2(6603));
         System.out.println("done");
     }
 
@@ -76,6 +76,16 @@ public class Ex127 {
             }
         };
         return !prime(n) && iter.apply(n-1);
+    }
+
+    static boolean carmichael_iter(Function tryFn, int x) {
+        return (x == 0) ||
+               tryFn.apply(x) ? carmichael_iter(x-1) : false;
+    }
+
+    static boolean carmichael2(int n) {
+        final Function<Integer, Boolean> try_it = a -> a == expmod(a, n, n);
+        return !prime(n) && carmichael_iter(try_it, n-1);
     }
 
     static int random(int limit) {
