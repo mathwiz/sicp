@@ -80,7 +80,7 @@ public class Ex127 {
 
     static boolean carmichael_iter(Function tryFn, int x) {
         return (x == 0) ||
-               tryFn.apply(x) ? carmichael_iter(x-1) : false;
+               (tryFn.apply(x) ? carmichael_iter(x-1) : false);
     }
 
     static boolean carmichael2(int n) {
