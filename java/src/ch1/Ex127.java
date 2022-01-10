@@ -71,16 +71,19 @@ public class Ex127 {
         final Function<Integer, Boolean> try_it = a -> a == expmod(a, n, n);
         final Function<Integer, Boolean> iter = new Function<Integer, Boolean>() {
             public Boolean apply(Integer x) {    
-                return (x == 0) ||
-                try_it.apply(x) ? this.apply(x-1) : false;
+                return 
+                (x == 0) ||
+                try_it.apply(x) && 
+                this.apply(x-1);
             }
         };
         return !prime(n) && iter.apply(n-1);
     }
 
     static boolean carmichael_iter(Function<Integer, Boolean> tryFn, int x) {
-        return (x == 0) ||
-               (tryFn.apply(x) ? carmichael_iter(x-1) : false);
+        return  (x == 0) ||
+                try_it.apply(x) && 
+                carmichael_iter(x-1);
     }
 
     static boolean carmichael2(int n) {
