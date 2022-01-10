@@ -25,7 +25,7 @@ public class Ex128 {
     static long expmod(long base, long exp, long m) {
         if (exp == 0) 
             return 1;
-        else if (divides(2, exp))
+        else if (divides.apply(2, exp))
             return square.apply(expmod(base, exp/2, m)) % m;
         else
             return (base * expmod(base, exp-1, m)) % m;
@@ -35,14 +35,12 @@ public class Ex128 {
 
     static Function<Long, Long> square = n -> n * n;
 
-    static boolean divides(long a, long b) {
-        return 0 == b % a;
-    }
+    static BiFunction<Long, Long, Boolean> divides = (a, b) -> 0 == b % a;
 
     static long find_divisor(long n, long test) {
         if (square.apply(test) > n)
             return n;
-        else if (divides(test, n))
+        else if (divides.apply(test, n))
             return test;
         else
             return find_divisor(n, test+1);
