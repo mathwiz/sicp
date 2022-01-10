@@ -15,8 +15,9 @@ public class Ex127 {
         // These are too big???
         // System.out.println(test_case(6601));
         // System.out.println(test_case(6603));
-        System.out.println(carmichael2(6603));
         System.out.println(carmichael2(2821));
+        System.out.println(carmichael2(6601));
+        System.out.println(carmichael2(6603));
         System.out.println("done");
     }
 
