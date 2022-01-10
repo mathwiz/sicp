@@ -50,7 +50,7 @@ public class Ex128 {
         else if (divides.apply(test, n))
             return test;
         else
-            return find_divisor(n, test+1);
+            return find_divisor_old(n, test+1);
     }
 
     static long smallest_divisor(long n) {
