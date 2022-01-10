@@ -12,11 +12,13 @@ public class Ex127 {
         System.out.println(test_case(1729));
         System.out.println(test_case(2465));
         System.out.println(test_case(2821));
-        // These are too big???
+        // This is too big???
         // System.out.println(test_case(6601));
-        // System.out.println(test_case(6603));
+        System.out.println(test_case(6603));
+
         System.out.println(carmichael2(2821));
-        System.out.println(carmichael2(6601));
+        // Still overflows
+        // System.out.println(carmichael2(6601));
         System.out.println(carmichael2(6603));
         System.out.println("done");
     }
