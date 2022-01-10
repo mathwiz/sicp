@@ -82,7 +82,7 @@ public class Ex128 {
                 this.apply(x-1);
             }
         };
-        return !prime.apply(n) && iter.apply(n-1);
+        return !prime.apply((long)n) && iter.apply(n-1);
     }
 
 }
