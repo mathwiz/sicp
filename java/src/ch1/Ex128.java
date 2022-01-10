@@ -54,7 +54,7 @@ public class Ex128 {
     }
 
     static long smallest_divisor(long n) {
-        return find_divisor.apply(n, 2);
+        return find_divisor.apply(n, 2L);
     }
 
     static boolean prime(int n) {
