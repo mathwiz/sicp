@@ -37,7 +37,14 @@ public class Ex128 {
 
     static BiFunction<Long, Long, Boolean> divides = (a, b) -> 0 == b % a;
 
-    static long find_divisor(long n, long test) {
+    static BiFunction<Long, Long, Long> find_divisor;
+    static {
+        find_divisor = (n, test) ->
+        square.apply(test) > n ? 
+        n : 
+        divides.apply(test, n) ? test : find_divisor.apply(n, test+1);
+    }
+    static long find_divisor_old(long n, long test) {
         if (square.apply(test) > n)
             return n;
         else if (divides.apply(test, n))
@@ -47,7 +54,7 @@ public class Ex128 {
     }
 
     static long smallest_divisor(long n) {
-        return find_divisor(n, 2);
+        return find_divisor.apply(n, 2);
     }
 
     static boolean prime(int n) {
