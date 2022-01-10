@@ -25,7 +25,7 @@ public class Ex128 {
     static long expmod(long base, long exp, long m) {
         if (exp == 0) 
             return 1;
-        else if (divides.apply(2, exp))
+        else if (divides.apply(2L, exp))
             return square.apply(expmod(base, exp/2, m)) % m;
         else
             return (base * expmod(base, exp-1, m)) % m;
