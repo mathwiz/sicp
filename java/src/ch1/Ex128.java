@@ -31,6 +31,8 @@ public class Ex128 {
             return (base * expmod(base, exp-1, m)) % m;
     }
 
+    static Function<Integer, Integer> random = limit -> new Random().nextInt(limit);
+
     static Function<Long, Long> square = n -> n * n;
 
     static boolean divides(long a, long b) {
@@ -69,7 +71,7 @@ public class Ex128 {
 
     static boolean fermat_test(int n) {
         Function<Integer, Boolean> f = (Integer a) -> a == expmod(a, n, n);
-        return f.apply(1 + random(n-1));
+        return f.apply(1 + random.apply(n-1));
     }
 
     static boolean carmichael(int n) {
@@ -85,9 +87,4 @@ public class Ex128 {
         return !prime(n) && iter.apply(n-1);
     }
 
-    static int random(int limit) {
-        return new Random().nextInt(limit);
-    }
-
-    
 }
