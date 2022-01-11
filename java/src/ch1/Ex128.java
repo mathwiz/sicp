@@ -58,7 +58,7 @@ public class Ex128 {
             else if (divides.apply(2L, e))
                 return squaremod_with_check(new MillerRabinExpmod(b, e/2, m).value());
             else
-                return (base * (new MillerRabinExpmod(b, e-1, m).value())) % m;
+                return (b * (new MillerRabinExpmod(b, e-1, m).value())) % m;
         }    
     }    
 
