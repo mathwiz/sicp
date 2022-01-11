@@ -77,17 +77,19 @@ public class Ex128 {
         fast_miller_rabin.apply(n, times-1));
     }    
 
+    static Function<Integer, Boolean> fermat_test = new Function<Integer, Boolean>() {
+        public Boolean apply(Integer n) {
+            Function<Integer, Boolean> f = a -> a == new Expmod(a, n, n).value();
+            return f.apply(1 + random.apply(n-1));
+        }
+    }
+
     static BiFunction<Integer, Integer, Boolean> fast_prime;
     static {
         fast_prime = (n, times) ->
         times == 0 ||
-        (fermat_test(n) && fast_prime.apply(n, times-1));
+        (fermat_test.apply(n) && fast_prime.apply(n, times-1));
     }    
-
-    static boolean fermat_test(int n) {
-        Function<Integer, Boolean> f = a -> a == new Expmod(a, n, n).value();
-        return f.apply(1 + random.apply(n-1));
-    }
 
     static Function<Integer, Integer> random = limit -> 
         new Random().nextInt(limit);
