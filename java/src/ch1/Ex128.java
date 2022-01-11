@@ -54,11 +54,11 @@ public class Ex128 {
     static Function<Long, Boolean> prime = n ->
         n == smallest_divisor.apply(n);
 
-    static BiFunction<Long, Integer, Boolean> fast_prime;
+    static BiFunction<Integer, Integer, Boolean> fast_prime;
     static {
         fast_prime = (n, times) ->
         times == 0 ||
-        (fermat_test((int)n) && fast_prime.apply(n, times-1));
+        (fermat_test(n) && fast_prime.apply(n, times-1));
     }    
 
     static boolean fermat_test(int n) {
