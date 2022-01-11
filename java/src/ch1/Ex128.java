@@ -32,7 +32,7 @@ public class Ex128 {
             if (e == 0) 
                 return 1;
             else if (divides.apply(2L, e))
-                return square.apply(expmod(b, e/2, m)) % m;
+                return square.apply(new Expmod(b, e/2, m).value()) % m;
             else
                 return (b * (new Expmod(b, e-1, m).value())) % m;
         }    
