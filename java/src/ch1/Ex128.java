@@ -44,6 +44,8 @@ public class Ex128 {
         }    
 
         long nontrivial_square_root(long x, long sq) {
+            boolean result = sq == 1L && x != 1L && x != (m-1);
+            return result ? 0L : sq;
         }    
 
         long squaremod_with_check(long n) {
