@@ -19,7 +19,7 @@ public class Ex128 {
 
     static String test_case(int n) {
         return String.format("%d \t Prime: %s \t Fast Prime: %s \t Carmichael: %s", 
-                             n, prime.apply((long)n), fast_prime(n), carmichael(n));
+                             n, prime.apply((long)n), fast_prime.apply((long)n, 20), carmichael(n));
     }
 
     static long expmod(long base, long exp, long m) {
@@ -54,9 +54,13 @@ public class Ex128 {
     static Function<Long, Boolean> prime = n ->
         n == smallest_divisor.apply(n);
 
-    static boolean fast_prime(int n) {
-        return fast_prime(n, 20);
-    }
+    static BiFunction<Long, Integer, Boolean> fast_prime;
+    static {
+        fast_prime = (n, times) ->
+        times == 0 ||
+        fermat_test(n) &&
+        fast_prime.apply(n, times-1);
+    }    
 
     static boolean fast_prime(int n, int times) {
         if (times == 0)
