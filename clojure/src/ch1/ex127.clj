@@ -37,12 +37,18 @@
 
 
 (defn carmichael? [n]
-  (fast-prime? n FAST-TIMES))
+  (let 
+    [try-it (fn [a] a)
+     iter (fn [x] 
+        (cond 
+            (= x 0) true
+            :else false))]
+     (and (not (prime? n)) (iter (dec n)))))
 
 
 (defn test-case [n]
   (let [p format]
-    (p "%d Prime: %s  Carmichael: %s" n (prime? n) (carmichael? n))))
+    (p "%d  \tPrime: %s  Carmichael: %s" n (prime? n) (carmichael? n))))
 
 
 (require
@@ -56,5 +62,6 @@
 (println (test-case 1729))
 (println (test-case 2465))
 (println (test-case 6601))
+(println (test-case 6603))
 
 (println "done")
