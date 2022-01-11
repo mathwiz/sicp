@@ -55,6 +55,6 @@
 (println (test-case 1105))
 (println (test-case 1729))
 (println (test-case 2465))
-(println (test-case 2466))
+(println (test-case 6601))
 
 (println "done")
