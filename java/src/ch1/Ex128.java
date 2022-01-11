@@ -82,7 +82,7 @@ public class Ex128 {
             Function<Integer, Boolean> f = a -> a == new Expmod(a, n, n).value();
             return f.apply(1 + random.apply(n-1));
         }
-    }
+    };
 
     static BiFunction<Integer, Integer, Boolean> fast_prime;
     static {
