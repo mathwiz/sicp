@@ -19,7 +19,7 @@ public class Ex128 {
 
     static String test_case(int n) {
         return String.format("%d \t Prime: %s \t Fast Prime: %s \t Carmichael: %s", 
-                             n, prime.apply((long)n), fast_prime.apply((long)n, 20), carmichael(n));
+                             n, prime.apply((long)n), fast_prime.apply(n, 20), carmichael(n));
     }
 
     static long expmod(long base, long exp, long m) {
