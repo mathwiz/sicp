@@ -32,23 +32,34 @@
         :else false))
 
 
+(defn find-divisor [n test-divisor]
+    (cond (> (square test-divisor) n) n
+          (divides? test-divisor n) test-divisor
+          :else (find-divisor n (inc test-divisor))))
+
+
+(defn smallest-divisor [n]
+    (find-divisor n 2))
+    
+
 (defn prime? [n]
-  (fast-prime? n FAST-TIMES))
+  (= n (smallest-divisor n)))
 
 
 (defn carmichael? [n]
   (let 
-    [try-it (fn [a] a)
+    [try-it (fn [a] (= a (expmod a n n)))
      iter (fn [x] 
-        (cond 
-            (= x 0) true
-            :else false))]
+            (cond 
+                (= x 0) true
+                (try-it x) (iter (dec x))
+                :else false))]
      (and (not (prime? n)) (iter (dec n)))))
 
 
 (defn test-case [n]
   (let [p format]
-    (p "%d  \tPrime: %s  Carmichael: %s" n (prime? n) (carmichael? n))))
+    (p "%d  \tPrime: %s Fast Prime: %s  Carmichael: %s" n (prime? n) (fast-prime? n FAST-TIMES) (carmichael? n))))
 
 
 (require
