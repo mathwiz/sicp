@@ -2,7 +2,7 @@
 ;; or on command line> clj filename.clj
 
 
-(def *FAST-TIMES* 20)
+(def FAST-TIMES 20)
 
 
 (defn divides? [a b]
@@ -11,10 +11,6 @@
 
 (defn square [n]
   (* n n))
-
-
-(defn even? [n]
-  (divides? 2 n))
 
 
 (defn expmod [base exp m]
@@ -37,16 +33,12 @@
 
 
 (defn prime? [n]
-  (fast-prime? n *FAST-TIMES*))
+  (fast-prime? n FAST-TIMES))
 
 
 (defn test-case [n]
   (let [p format]
     (p "%d" n)))
-
-
-(defn search-for-primes [start end]
-  (search-helper (if (odd? start) start (inc start)) end))
 
 
 (require
