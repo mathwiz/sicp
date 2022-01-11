@@ -62,6 +62,13 @@ public class Ex128 {
         }    
     }    
 
+    static Function<Integer, Boolean> miller_rabin_test = new Function<Integer, Boolean>() {
+        public Boolean apply(Integer n) {
+            Function<Integer, Boolean> f = a -> 1 == new MillerRabinExpmod(a, n-1, n).value();
+            return f.apply(1 + random.apply(n-1));
+        }
+    };
+
     static BiFunction<Integer, Integer, Boolean> fast_miller_rabin;
     static {
         fast_miller_rabin = (n, times) ->
@@ -69,13 +76,6 @@ public class Ex128 {
         (miller_rabin_test.apply(n) && 
         fast_miller_rabin.apply(n, times-1));
     }    
-
-    static Function<Integer, Boolean> miller_rabin_test = new Function<Integer, Boolean>() {
-        public Boolean apply(Integer n) {
-            Function<Integer, Boolean> f = a -> 1 == new MillerRabinExpmod(a, n-1, n).value();
-            return f.apply(1 + random.apply(n-1));
-        }
-    }
 
     static BiFunction<Integer, Integer, Boolean> fast_prime;
     static {
