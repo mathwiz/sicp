@@ -52,7 +52,7 @@
      iter (fn [x] 
             (cond 
                 (= x 0) true
-                (try-it x) (iter (dec x))
+                (try-it x) (recur (dec x))
                 :else false))]
      (and (not (prime? n)) (iter (dec n)))))
 
