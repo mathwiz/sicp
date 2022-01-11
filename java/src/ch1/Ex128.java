@@ -22,13 +22,30 @@ public class Ex128 {
                              n, prime.apply((long)n), fast_prime.apply(n, 20), carmichael(n));
     }
 
+    static class Expmod {
+        long b, e, m;
+        Expmod(long base, long exp, long modulus) {
+            b = base; e = exp; m = modulus;
+        }    
+
+        long value() {
+            if (e == 0) 
+                return 1;
+            else if (divides.apply(2L, e))
+                return square.apply(expmod(b, e/2, m)) % m;
+            else
+                return (b * (new Expmod(b, e-1, m).value())) % m;
+        }    
+    }
+    
     static long expmod(long base, long exp, long m) {
-        if (exp == 0) 
-            return 1;
-        else if (divides.apply(2L, exp))
-            return square.apply(expmod(base, exp/2, m)) % m;
-        else
-            return (base * expmod(base, exp-1, m)) % m;
+        return new Expmod(base, exp, m).value();
+        // if (exp == 0) 
+        //     return 1;
+        // else if (divides.apply(2L, exp))
+        //     return square.apply(expmod(base, exp/2, m)) % m;
+        // else
+        //     return (base * expmod(base, exp-1, m)) % m;
     }
 
     static Function<Integer, Integer> random = limit -> 
