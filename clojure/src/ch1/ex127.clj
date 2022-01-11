@@ -36,9 +36,13 @@
   (fast-prime? n FAST-TIMES))
 
 
+(defn carmichael? [n]
+  (fast-prime? n FAST-TIMES))
+
+
 (defn test-case [n]
   (let [p format]
-    (p "%d" n)))
+    (p "%d Prime: %s  Carmichael: %s" n (prime? n) (carmichael? n))))
 
 
 (require
@@ -47,5 +51,10 @@
 (println (test-case 10))
 (println (test-case 11))
 (println (test-case 13))
+(println (test-case 561))
+(println (test-case 1105))
+(println (test-case 1729))
+(println (test-case 2465))
+(println (test-case 2466))
 
 (println "done")
