@@ -58,25 +58,11 @@ public class Ex128 {
     static {
         fast_prime = (n, times) ->
         times == 0 ||
-        (fermat_test.apply((int)n) && fast_prime.apply(n, times-1));
+        (fermat_test((int)n) && fast_prime.apply(n, times-1));
     }    
 
-    static boolean fast_prime(int n, int times) {
-        if (times == 0)
-            return true;
-        else if (fermat_test(n))
-            return fast_prime(n, times-1);
-        else
-            return false;
-    }
-
-    static Function<Integer, Boolean> fermat_test;
-    static {
-        fermat_test = n ->
-        expmod((1 + random.apply(n-1)), n, n);
-    }
     static boolean fermat_test(int n) {
-        Function<Integer, Boolean> f = (Integer a) -> a == expmod(a, n, n);
+        Function<Integer, Boolean> f = a -> a == expmod(a, n, n);
         return f.apply(1 + random.apply(n-1));
     }
 
