@@ -38,16 +38,6 @@ public class Ex128 {
         }    
     }
     
-    static long expmod(long base, long exp, long m) {
-        return new Expmod(base, exp, m).value();
-        // if (exp == 0) 
-        //     return 1;
-        // else if (divides.apply(2L, exp))
-        //     return square.apply(expmod(base, exp/2, m)) % m;
-        // else
-        //     return (base * expmod(base, exp-1, m)) % m;
-    }
-
     static Function<Integer, Integer> random = limit -> 
         new Random().nextInt(limit);
 
@@ -79,12 +69,12 @@ public class Ex128 {
     }    
 
     static boolean fermat_test(int n) {
-        Function<Integer, Boolean> f = a -> a == expmod(a, n, n);
+        Function<Integer, Boolean> f = a -> a == new Expmod(a, n, n).value();
         return f.apply(1 + random.apply(n-1));
     }
 
     static boolean carmichael(int n) {
-        final Function<Integer, Boolean> try_it = a -> a == expmod(a, n, n);
+        final Function<Integer, Boolean> try_it = a -> a == new Expmod(a, n, n).value();
         final Function<Integer, Boolean> iter = new Function<Integer, Boolean>() {
             public Boolean apply(Integer x) {    
                 return 
