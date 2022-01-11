@@ -59,7 +59,7 @@
 
 (defn test-case [n]
   (let [p format]
-    (p "%d  \tPrime: %s Fast Prime: %s  Carmichael: %s" n (prime? n) (fast-prime? n FAST-TIMES) (carmichael? n))))
+    (p "%d  \tPrime: %s \tFast Prime: %s \tCarmichael: %s" n (prime? n) (fast-prime? n FAST-TIMES) (carmichael? n))))
 
 
 (require
