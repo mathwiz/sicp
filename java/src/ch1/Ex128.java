@@ -71,6 +71,11 @@ public class Ex128 {
             return false;
     }
 
+    static Function<Long, Boolean> fermat_test;
+    static {
+        Function<Integer, Boolean> f = a -> a == expmod(a, n, n);
+        return f.apply(1 + random.apply(n-1));
+    }    
     static boolean fermat_test(int n) {
         Function<Integer, Boolean> f = (Integer a) -> a == expmod(a, n, n);
         return f.apply(1 + random.apply(n-1));
