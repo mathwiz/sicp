@@ -1,7 +1,7 @@
 # cd("c:/Users/Yohan/IdeaProjects/sicp/elixir/ch1")
 # Load with import_file("filename")
 # Run with Module.func(args)
-defmodule Ex127 do
+defmodule Ex128 do
   @moduledoc false
 
   def random(limit), do: :rand.uniform(limit) - 1
@@ -55,7 +55,7 @@ defmodule Ex127 do
   defp do_carmichael(n, tryFn), do: tryFn.(n) and do_carmichael(n-1, tryFn)
 
   def number_test(n) do
-      IO.puts("#{n}: \tPrime:#{prime?(n)} \tFast Prime:#{fast_prime(n,20)} \tCarmichael:#{carmichael?(n)}")
+      IO.puts("#{n}: \tPrime:#{prime?(n)} \tFast Prime:#{fast_prime(n,20)} \tMiller-Rabin:#{miller_rabin(n,20)} \n")
   end
 
   def test_cases() do
