@@ -36,8 +36,8 @@ def expmod(base: BigInt, exp: Int, m: BigInt): BigInt = exp match {
 }
 
 def carmichael(n: Int) : Boolean = {
-  val try_it = (a: Int) : Boolean => a == expmod(a, n, n)
-  val iter = (x: Int) : Int => x match {
+  val try_it = (a: Int)  => a == expmod(a, n, n)
+  def iter(x: Int) : Int => x match {
     case 0 => true
     case _ if try_it(x) => iter(x-1)
     case _ => false
