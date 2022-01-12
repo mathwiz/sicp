@@ -31,7 +31,7 @@
           squaremod-with-check (fn [x]
                                    (nontrivial-sqrt x (rem (square x) m)))]
         (cond (= exp 0) 1
-              (even? exp) (squaremod-with-check (recur base (/ exp 2) m))
+              (even? exp) (squaremod-with-check (miller-rabin-expmod base (/ exp 2) m))
               :else (rem (* base (miller-rabin-expmod base (dec exp) m)) m))))
 
 
