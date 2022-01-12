@@ -20,7 +20,7 @@
     (cond ((= exp 0) 1) 
           ((not (odd? exp)) 
            (squaremod-with-check (miller-rabin-expmod base (/ exp 2) m)))
-          (t (mod (* base (expmod base (1- exp) m)) m)))))
+          (t (mod (* base (miller-rabin-expmod base (1- exp) m)) m)))))
 
 
 (defun fermat-test (n)
@@ -76,15 +76,15 @@
 
 ;; testing
 (defun print-val (v)
-  (format t "~S ~%" v))
+  (format t "~S " v))
 
 
 (defun my-test (n)
   (print-val n)
   (print-val (prime? n))
-  (print-val (fast-prime? n 100))
-  (print-val (fast-miller-rabin? n 100))
-  (print-val 'done))
+  (print-val (fast-prime? n *FAST-TIMES*))
+  (print-val (fast-miller-rabin? n *FAST-TIMES*))
+  (format t "~%"))
 
 ;; Primes
 (my-test 11)
@@ -103,3 +103,5 @@
 (my-test 2465)
 (my-test 2821)
 (my-test 6601)
+
+(format t "done~%")

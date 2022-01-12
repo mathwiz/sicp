@@ -58,12 +58,14 @@
 
 ;; testing
 (defun print-val (v)
-  (format t "~S ~%" v))
+  (format t "~S " v))
 
 (defun carmichael-test (n)
   (print-val n)
   (print-val (prime? n))
-  (print-val (carmichael-num n)))
+  (print-val (fast-prime? n *FAST-TIMES*))
+  (print-val (carmichael-num n))
+  (format t "~%"))
 
 (carmichael-test 10)
 (carmichael-test 11)
@@ -76,3 +78,4 @@
 (carmichael-test 6601)
 ;; non carmichael
 (carmichael-test 6603)
+
