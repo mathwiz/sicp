@@ -2,6 +2,10 @@
 
 import java.util.Random
 
+def square(n: BigInt): BigInt = n * n
+
+def random(limit: Int): Int = new Random().nextInt(limit)
+
 def divides(a: BigInt, b: BigInt): Boolean = b % a == 0
 
 def smallest_divisor(n: Int): Int = find_divisor(n, 2)
@@ -31,14 +35,18 @@ def expmod(base: BigInt, exp: Int, m: BigInt): BigInt = exp match {
   case _ => ((base * expmod(base, exp-1, m)) % m)
 }
 
-def square(n: BigInt): BigInt = n * n
-
-def random(limit: Int): Int = {
-  new Random().nextInt(limit)
+def carmichael(n: Int) : Boolean = {
+  val try_it = (a: Int) => a == expmod(a, n, n)
+  val iter = (x: Int) => x match {
+    case 0 => true
+    case _ if try_it(x) => iter(x-1)
+    case _ => false
+  }
+  !prime(n) && iter(n-1)
 }
 
 def test_number(n: Int) = {
-  printf("%d  \tPrime: %s", n, prime(n))
+  printf("%d  \tPrime: %s \tFast Prime: %s \tCarmichael: %s \n", n, prime(n), fast_prime(n), carmichael(n))
 }
 
 // testing
