@@ -46,7 +46,7 @@ def carmichael(n: Int) : Boolean = {
 }
 
 def test_number(n: Int) = {
-  printf("%d  \tPrime: %s \tFast Prime: %s \tCarmichael: %s \n", n, prime(n), fast_prime(n), carmichael(n))
+  printf("%d  \tPrime: %s \tFast Prime: %s \tCarmichael: %s \n", n, prime(n), fast_prime(n, 20), carmichael(n))
 }
 
 // testing
