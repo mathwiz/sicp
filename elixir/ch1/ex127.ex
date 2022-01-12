@@ -51,10 +51,9 @@ defmodule Ex127 do
     
   end  
   
-  def carmichael(n) when prime(n), do: false
   def carmichael(n) do
     try_it = fn (a) -> a == expmod(a, n, n) end
-    do_carmichael(n-1, try_it)
+    !prime(n) and do_carmichael(n-1, try_it)
   end  
 
   defp do_carmichael(0, _), do: true
