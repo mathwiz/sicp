@@ -37,7 +37,7 @@ def expmod(base: BigInt, exp: Int, m: BigInt): BigInt = exp match {
 
 def miller_rabin_expmod(base: BigInt, exp: Int, m: BigInt): BigInt = {
   def nontrivial_sqrt(x: BigInt, sq: BigInt) : BigInt = {
-    (sq == 1 && x != 1 && x != m-1) ? 0 : sq
+    if (sq == 1 && x != 1 && x != m-1) 0 else sq
   }
   def squaremod_with_check(x: BigInt) : BigInt = {
     nontrivial_sqrt(x, square(x) % m)
@@ -59,7 +59,7 @@ def fast_miller_rabin(n: Int, times: Int) : Boolean = {
 }
 
 def test_number(n: Int) = {
-  printf("%d  \tPrime: %s \tFast Prime: %s \tCarmichael: %s \n", n, prime(n), fast_prime(n, 20), fast_miller_rabin(n, 20))
+  printf("%d  \tPrime: %s \tFast Prime: %s \tMiller-Rabin: %s \n", n, prime(n), fast_prime(n, 20), fast_miller_rabin(n, 20))
 }
 
 // testing
