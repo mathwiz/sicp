@@ -52,7 +52,7 @@ defmodule Ex127 do
   end  
 
   defp do_carmichael(0, _), do: true
-  defp do_carmichael(n, tryFn), do: tryFn(n) and do_carmichael(n-1, tryFn)
+  defp do_carmichael(n, tryFn), do: tryFn.(n) and do_carmichael(n-1, tryFn)
 
   def number_test(n) do
       IO.puts("#{n}: \tPrime:#{prime(n)} \tFast Prime:#{fast_prime(n,20)} \tCarmichael:#{carmichael?(n)} \n")
