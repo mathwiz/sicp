@@ -46,21 +46,16 @@ defmodule Ex127 do
     end
   end
 
-  def carmichael(n) do
+  def carmichael?(n) do
     try_it = fn (a) -> a == expmod(a, n, n) end
-    
-  end  
-  
-  def carmichael(n) do
-    try_it = fn (a) -> a == expmod(a, n, n) end
-    !prime(n) and do_carmichael(n-1, try_it)
+    !prime?(n) and do_carmichael(n-1, try_it)
   end  
 
   defp do_carmichael(0, _), do: true
   defp do_carmichael(n, tryFn), do: tryFn(n) and do_carmichael(n-1, tryFn)
 
   def number_test(n) do
-      IO.puts("#{n}: \tPrime:#{prime(n)} \tFast Prime:#{fast_prime(n,20)} \tCarmichael:#{carmichael(n)} \n")
+      IO.puts("#{n}: \tPrime:#{prime(n)} \tFast Prime:#{fast_prime(n,20)} \tCarmichael:#{carmichael?(n)} \n")
   end
 
   def test_cases() do
