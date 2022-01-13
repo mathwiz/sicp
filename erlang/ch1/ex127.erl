@@ -26,6 +26,8 @@ main() ->
   io:fwrite("~w\n", [test_number(6601)]),
   io:fwrite("~w\n", [test_number(6603)]).
 
+test_number(N) ->
+  io:format("n:~w \tPrime:~w \tFast Prime:~w \tCarmichael:~w\t", [N, prime(N), fast_prime(N, 20), carmichael(N)]).
 
 square(N) -> N * N.
 
@@ -62,6 +64,8 @@ fast_prime(N, Times) ->
     false -> false
   end.
 
-test_number(N) ->
-  io:format("~w: \tPrime:~w \tFast Prime:~w", [N, prime(N), fast_prime(N, 20)]).
+carmichael(N) ->
+  TryIt = fun (A) -> expmod(A, N, N) == A end,
+  Iter = fun (X) -> X==0 and TryIt(X) and Iter(X-1) end,
+  not prime(N) and Iter(N-1). 
 
