@@ -1,5 +1,12 @@
 Object subclass: SmallestDivisor [
-| n |
+| N |
+setN: aNum [
+    N := aNum
+]
+
+value [
+    ^ self class findDivisorForN: N andTest: 2.
+]
 
 SmallestDivisor class >> dividesA: a B: b [
     ^ 0 == (b rem: a).
@@ -14,27 +21,20 @@ SmallestDivisor class >> findDivisorForN: n andTest: test [
 
     ^ self findDivisorForN: n andTest: test + 1.
 ]
-
-setN: aNum [
-    n := aNum
-]
-
-value [
-    ^ self class findDivisorForN: n andTest: 2.
-]
-
 ] "end class"
 
 
-
-Object subclass: PrimeSearch [
-| start end |
-setStart: a1 End: a2 [
-    start := a1.
-    end := a2.
+Object subclass: FastPrime [
+| N |
+setN: aNum [
+    N := aNum.
 ]
 
-PrimeSearch class >> isPrime: n [
+value [
+    ^self class isPrime: N
+]
+
+FastPrime class >> isPrime: n [
     | iter |
     iter := [ :times | 
         (times == 0) ifTrue: [ true ] 
@@ -42,16 +42,16 @@ PrimeSearch class >> isPrime: n [
                                                      ifFalse: [ false ] ]
     ].
 
-    ^ iter value: 2.
+    ^ iter value: 20.
 ]
 
-PrimeSearch class >> fermatTest: n [
+FastPrime class >> fermatTest: n [
     | try_it |
     try_it := [ :a | (self expmodForBase: a Exp: n M: n) == a  ].
     ^ try_it value: 1 + ((1 to: (n - 1)) atRandom).
 ]
 
-PrimeSearch class >> expmodForBase: base Exp: exp M: m [
+FastPrime class >> expmodForBase: base Exp: exp M: m [
     ^ (exp == 0)
         ifTrue: [ 1 ]
         ifFalse: [ (self even: exp)
@@ -60,26 +60,12 @@ PrimeSearch class >> expmodForBase: base Exp: exp M: m [
         ].
 ]
 
-PrimeSearch class >> even: n [
+FastPrime class >> even: n [
     ^ (n rem: 2) == 0.
 ]
 
-PrimeSearch class >> square: n [
+FastPrime class >> square: n [
     ^ n * n.
-]
-
-search [
-    | even n |
-    even := [ :x | (x rem: 2) == 0 ].
-
-    n := (even value: start) ifTrue: [ start + 1 ] ifFalse: [ start ].
-    self searchHelperForN: n andEnd: end.
-]
-
-reportPrime: n [
-    (self class isPrime: n)
-    ifTrue: [ n display. ' ***' displayNl. ]
-    ifFalse: [ n displayNl. ]
 ]
 
 ] "end class"
@@ -87,20 +73,21 @@ reportPrime: n [
 
 | test_case prime fast_prime carmichael |
 
-old_prime := [ :x | (SmallestDivisor new setN: x; value) == x ].
-
 prime := [ :x | (SmallestDivisor new setN: x; value) == x ].
 
-(prime value: 13) displayNl.
+fast_prime := [ :x | FastPrime new setN: x; value ].
 
 test_case := [ :x | 'n:' display. 
                     x display. 
                     '  Prime:' display. 
-                    "(prime value: x) display."
+                    (prime value: x) display.
+                    '  Fast Prime:' display. 
+                    (fast_prime value: x) display.
                     '' displayNl. ].
 
 test_case value: 10.
 test_case value: 11.
+test_case value: 97.
 test_case value: 561.
 test_case value: 1105.
 test_case value: 1729.
