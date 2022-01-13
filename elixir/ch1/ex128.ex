@@ -71,7 +71,7 @@ defmodule Ex128 do
   end  
 
   def number_test(n) do
-      IO.puts("#{n}: \tPrime:#{prime?(n)} \tFast Prime:#{fast_prime(n,20)} \tMiller-Rabin:#{miller_rabin(n,20)} \n")
+      IO.puts("#{n}: \tPrime:#{prime?(n)} \tFast Prime:#{fast_prime(n,20)} \tMiller-Rabin:#{miller_rabin(n,20)}")
   end
 
   def test_cases() do
