@@ -63,5 +63,5 @@ fast_prime(N, Times) ->
   end.
 
 test_number(N) ->
-  io_lib:format("~w: \tPrime:~w \tFast Prime:~w", [N, prime(N), fast_prime(N)]).
+  io:format("~w: \tPrime:~w \tFast Prime:~w", [N, N+1, N+2]).
 
