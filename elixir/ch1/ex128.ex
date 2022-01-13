@@ -46,13 +46,29 @@ defmodule Ex128 do
     end
   end
 
-  def carmichael?(n) do
-    try_it = fn (a) -> a == expmod(a, n, n) end
-    !prime?(n) and do_carmichael(n-1, try_it)
+  def miller_rabin(_, 0), do: true
+  def miller_rabin(n, times) do
+    miller_rabin_test(n) and miller_rabin(n, times-1)
   end  
 
-  defp do_carmichael(0, _), do: true
-  defp do_carmichael(n, tryFn), do: tryFn.(n) and do_carmichael(n-1, tryFn)
+  def miller_rabin_test(n, times) do
+    try_it = fn (a) -> 1 == expmod(a, n-1, n) end
+    try_it(1 + random(n-1))
+  end  
+
+  def miller_rabin_expmod(_, 0, _), do: 1
+  def miller_rabin_expmod(base, exp, m) do
+    nontrivial_sqrt = fn (x, sq) ->
+      if sq == 1 and x != 1 and x != (m-1), do: 0, else: sq end
+    squaremod_with_check = fn (x) ->
+      nontrivial_sqrt.(x, rem(sq(x), m)) end
+
+    if divides?(2, exp) do
+      squaremod_with_check.(miller_rabin_expmod(base, div(exp, 2), m))
+    else
+      rem(base * miller_rabin_expmod(base, exp-1, m), m)
+    end
+  end
 
   def number_test(n) do
       IO.puts("#{n}: \tPrime:#{prime?(n)} \tFast Prime:#{fast_prime(n,20)} \tMiller-Rabin:#{miller_rabin(n,20)} \n")
