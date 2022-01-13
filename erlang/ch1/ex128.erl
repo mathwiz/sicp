@@ -66,8 +66,17 @@ fast_prime(N, Times) ->
 
 miller_rabin_expmod(_, 0, _) -> 1;
 miller_rabin_expmod(Base, Exp, M) ->
+  NontrivialSqrt = fun (X, SQ) -> 
+    if
+      SQ==1 andalso (not X==1) andalso (not X==M-1) -> 0;
+      true -> SQ
+    end
+  end,
+
+  SquareMod = fun (X) -> NontrivialSqrt(X, square(X) rem M) end,
+
   case even(Exp) of
-    true -> square(miller_rabin_expmod(Base, Exp div 2, M)) rem M;
+    true -> SquareMod(miller_rabin_expmod(Base, Exp div 2, M)) rem M;
     false -> Base * miller_rabin_expmod(Base, Exp - 1, M) rem M
   end.
 
@@ -77,11 +86,5 @@ miller_rabin_test(N) ->
 
 miller_rabin(_, 0) -> true;
 miller_rabin(N, Times) -> 
+  miller_rabin_test(N) andalso miller_rabin(N, Times-1).
 
-carmichael(N) ->
-  TryIt = fun (A) -> expmod(A, N, N) == A end,
-  not prime(N) andalso do_carmichael(TryIt, N-1). 
-
-do_carmichael(_, 0) -> true;
-do_carmichael(TestFn, X) ->
-  TestFn(X) andalso do_carmichael(TestFn, X-1).
