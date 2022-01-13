@@ -68,5 +68,6 @@ carmichael(N) ->
   TryIt = fun (A) -> expmod(A, N, N) == A end,
   not prime(N) and do_carmichael(TryIt, N-1). 
 
+do_carmichael(_, 0) -> true;
 do_carmichael(TestFn, X) ->
-  X==0 or TestFn(X) and do_carmichael(TestFn, X-1).
+  TestFn(X) andalso do_carmichael(TestFn, X-1).
