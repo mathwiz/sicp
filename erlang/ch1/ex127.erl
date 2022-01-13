@@ -27,9 +27,6 @@ main() ->
   io:fwrite("~w\n", [test_number(6603)]).
 
 
-test_number(N) ->
-  io_lib:format("~w: \tPrime:~w \tFast Prime:~w", [N, prime(N), fast_prime(N)]).
-
 square(N) -> N * N.
 
 random(Limit) -> rand:uniform(Limit) - 1.
@@ -47,17 +44,6 @@ find_divisor(N, Test) ->
 
 prime(N) -> N == smallest_divisor(N).
 
-fast_prime(_, 0) -> true;
-fast_prime(N, Times) ->
-  case fermat_test(N) of
-    true -> fast_prime(N, Times-1);
-    false -> false
-  end.
-
-fermat_test(N) ->
-  TryIt = fun (A) -> expmod(A, N, N) == A end,
-  TryIt(1 + random(N - 1)).
-
 expmod(_, 0, _) -> 1;
 expmod(Base, Exp, M) ->
   case even(Exp) of
@@ -65,8 +51,17 @@ expmod(Base, Exp, M) ->
     false -> Base * expmod(Base, Exp - 1, M) rem M
   end.
 
+fermat_test(N) ->
+  TryIt = fun (A) -> expmod(A, N, N) == A end,
+  TryIt(1 + random(N - 1)).
 
+fast_prime(_, 0) -> true;
+fast_prime(N, Times) ->
+  case fermat_test(N) of
+    true -> fast_prime(N, Times-1);
+    false -> false
+  end.
 
-
-
+test_number(N) ->
+  io_lib:format("~w: \tPrime:~w \tFast Prime:~w", [N, prime(N), fast_prime(N)]).
 
