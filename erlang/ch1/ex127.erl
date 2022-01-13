@@ -66,6 +66,7 @@ fast_prime(N, Times) ->
 
 carmichael(N) ->
   TryIt = fun (A) -> expmod(A, N, N) == A end,
-  Iter = fun (X) -> X==0 and TryIt(X) and Iter(X-1) end,
-  not prime(N) and Iter(N-1). 
+  not prime(N) and do_carmichael(TryIt, N-1). 
 
+do_carmichael(TestFn, X) ->
+  X==0 or TestFn(X) and do_carmichael(X-1).
