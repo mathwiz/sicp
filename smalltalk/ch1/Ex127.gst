@@ -1,4 +1,5 @@
-Dictionary subclass: SmallestDivisor [
+Object subclass: SmallestDivisor [
+| n |
 
 SmallestDivisor class >> dividesA: a B: b [
     ^ 0 == (b rem: a).
@@ -14,8 +15,12 @@ SmallestDivisor class >> findDivisorForN: n andTest: test [
     ^ self findDivisorForN: n andTest: test + 1.
 ]
 
+setN: aNum [
+    n := aNum
+]
+
 value [
-    ^ self class findDivisorForN: (self at: #N) andTest: 2.
+    ^ self class findDivisorForN: n andTest: 2.
 ]
 
 ] "end class"
@@ -84,11 +89,9 @@ reportPrime: n [
 
 old_prime := [ :x | (SmallestDivisor new setN: x; value) == x ].
 
-prime := [ :x | (SmallestDivisor new; at: #N put: x; value) == x ].
+prime := [ :x | (SmallestDivisor new setN: x; value) == x ].
 
-prime := Dictionary new.
-prime at: #N put: 11.
-(prime at: #N) displayNl.
+(prime value: 13) displayNl.
 
 test_case := [ :x | 'n:' display. 
                     x display. 
