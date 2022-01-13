@@ -60,7 +60,7 @@ defmodule Ex128 do
     end
   end
 
-  def miller_rabin_test(n, times) do
+  def miller_rabin_test(n) do
     try_it = fn (a) -> 1 == miller_rabin_expmod(a, n-1, n) end
     try_it.(1 + random(n-1))
   end  
