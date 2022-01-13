@@ -46,16 +46,6 @@ defmodule Ex128 do
     end
   end
 
-  def miller_rabin(_, 0), do: true
-  def miller_rabin(n, times) do
-    miller_rabin_test(n) and miller_rabin(n, times-1)
-  end  
-
-  def miller_rabin_test(n, times) do
-    try_it = fn (a) -> 1 == expmod(a, n-1, n) end
-    try_it(1 + random(n-1))
-  end  
-
   def miller_rabin_expmod(_, 0, _), do: 1
   def miller_rabin_expmod(base, exp, m) do
     nontrivial_sqrt = fn (x, sq) ->
@@ -69,6 +59,16 @@ defmodule Ex128 do
       rem(base * miller_rabin_expmod(base, exp-1, m), m)
     end
   end
+
+  def miller_rabin_test(n, times) do
+    try_it = fn (a) -> 1 == miller_rabin_expmod(a, n-1, n) end
+    try_it(1 + random(n-1))
+  end  
+
+  def miller_rabin(_, 0), do: true
+  def miller_rabin(n, times) do
+    miller_rabin_test(n) and miller_rabin(n, times-1)
+  end  
 
   def number_test(n) do
       IO.puts("#{n}: \tPrime:#{prime?(n)} \tFast Prime:#{fast_prime(n,20)} \tMiller-Rabin:#{miller_rabin(n,20)} \n")
