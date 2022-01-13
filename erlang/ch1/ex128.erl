@@ -9,7 +9,7 @@
 %%%
 %%% @end
 %%%-------------------------------------------------------------------
--module(ex127).
+-module(ex128).
 -author("Yohan").
 
 %% API
@@ -27,7 +27,7 @@ main() ->
   io:fwrite("~w\n", [test_number(6603)]).
 
 test_number(N) ->
-  io:format("n:~w \tPrime:~w \tFast Prime:~w \tCarmichael:~w\t", [N, prime(N), fast_prime(N, 20), carmichael(N)]).
+  io:format("n:~w \tPrime:~w \tFast Prime:~w \tMiller-Rabin:~w\t", [N, prime(N), fast_prime(N, 20), miller_rabin(N, 20)]).
 
 square(N) -> N * N.
 
@@ -63,6 +63,20 @@ fast_prime(N, Times) ->
     true -> fast_prime(N, Times-1);
     false -> false
   end.
+
+miller_rabin_expmod(_, 0, _) -> 1;
+miller_rabin_expmod(Base, Exp, M) ->
+  case even(Exp) of
+    true -> square(miller_rabin_expmod(Base, Exp div 2, M)) rem M;
+    false -> Base * miller_rabin_expmod(Base, Exp - 1, M) rem M
+  end.
+
+miller_rabin_test(N) ->
+  TryIt = fun (A) -> miller_rabin_expmod(A, N-1, N) == 1 end,
+  TryIt(1 + random(N - 1)).
+
+miller_rabin(_, 0) -> true;
+miller_rabin(N, Times) -> 
 
 carmichael(N) ->
   TryIt = fun (A) -> expmod(A, N, N) == A end,
