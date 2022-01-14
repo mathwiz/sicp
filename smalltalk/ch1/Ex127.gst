@@ -87,15 +87,6 @@ Carmichael class >> iterate: n withBlock: aBlock [
                        ifFalse: [ false ]
                  ]
 ]
-
-Carmichael class >> expmodForBase: base Exp: exp M: m [
-    ^ (exp == 0)
-        ifTrue: [ 1 ]
-        ifFalse: [ (self even: exp)
-                       ifTrue: [ (self square: (self expmodForBase: base Exp: (exp / 2) M: m)) rem: m ]
-                       ifFalse: [ (base * (self expmodForBase: base Exp: (exp - 1) M: m)) rem: m ]
-        ].
-]
 ] "Carmichael"
 
 
