@@ -68,7 +68,7 @@ FastPrime class >> expmodForBase: base Exp: exp M: m [
 
 FastPrime subclass: Carmichael [
 value [
-    ^((self class isPrime: N) not) 
+    ^(self class isPrime: N) not
 ]
 
 Carmichael class >> isPrime: n [
@@ -111,7 +111,9 @@ test_case := [ :x | 'n:' display.
                     '' displayNl. ].
 
 test_case value: 10.
+test_case value: 7.
 test_case value: 11.
+test_case value: 13.
 test_case value: 97.
 test_case value: 561.
 test_case value: 1105.
