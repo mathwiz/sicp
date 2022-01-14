@@ -68,17 +68,24 @@ FastPrime class >> expmodForBase: base Exp: exp M: m [
 
 FastPrime subclass: Carmichael [
 value [
-    ^(self class isPrime: N) not
+    | try_it |
+    try_it := [ :a | (self class expmodForBase: a Exp: N M: N) == a  ].
+    ^ (self class isPrime: N)
+        ifTrue:  [ false ]
+        ifFalse: [ self class iterate: (N-1) withBlock: try_it ]
 ]
 
 Carmichael class >> isPrime: n [
-    ^(SmallestDivisor new setN: n; value) == n
+    ^ (SmallestDivisor new setN: n; value) == n
 ]
 
-Carmichael class >> iterate: n [
-    | try_it |
-    try_it := [ :a | (self expmodForBase: a Exp: n M: n) == a  ].
-    ^ try_it value: 1 + ((1 to: (n - 1)) atRandom).
+Carmichael class >> iterate: n withBlock: aBlock [
+    ^ (n == 0)
+        ifTrue: [ true ]
+        ifFalse: [ (aBlock value: n)
+                       ifTrue:  [ self iterate: (n-1) withBlock: aBlock ]
+                       ifFalse: [ false ]
+                 ]
 ]
 
 Carmichael class >> expmodForBase: base Exp: exp M: m [
@@ -113,8 +120,8 @@ test_case := [ :x | 'n:' display.
 test_case value: 10.
 test_case value: 7.
 test_case value: 11.
-test_case value: 13.
 test_case value: 97.
+test_case value: 499.
 test_case value: 561.
 test_case value: 1105.
 test_case value: 1729.
