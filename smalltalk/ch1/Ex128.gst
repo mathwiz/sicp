@@ -42,18 +42,16 @@ value [
 FastPrime class >> isPrime: n [
     | iter |
     iter := [ :times | 
-        (times == 0) ifTrue: [ true ] 
-                     ifFalse: [ (self fermatTest: n) ifTrue: [ iter value: (times - 1) ]
-                                                     ifFalse: [ false ] ]
-    ].
+              (times == 0) or: [ (self fermatTest: n) ifTrue:  [ iter value: (times - 1) ]
+                                                      ifFalse: [ false ] ] ].
 
     ^ iter value: 20.
 ]
 
 FastPrime class >> fermatTest: n [
-    | try_it |
-    try_it := [ :a | (self expmodForBase: a Exp: n M: n) == a  ].
-    ^ try_it value: 1 + ((1 to: (n - 1)) atRandom).
+    | tryIt |
+    tryIt := [ :a | (self expmodForBase: a Exp: n M: n) == a  ].
+    ^ tryIt value: 1 + ((1 to: (n - 1)) atRandom).
 ]
 
 FastPrime class >> expmodForBase: base Exp: exp M: m [
@@ -66,32 +64,48 @@ FastPrime class >> expmodForBase: base Exp: exp M: m [
 ]
 ] "FastPrime"
 
-| test_case prime fast_prime  |
+FastPrime subclass: MillerRabin [
+
+MillerRabin class >> fermatTest: n [
+    | tryIt |
+    tryIt := [ :a | (self expmodForBase: a Exp: n M: n) == a  ].
+    ^ tryIt value: 1 + ((1 to: (n - 1)) atRandom).
+]
+
+MillerRabin class >> expmodForBase: base Exp: exp M: m [
+    ^ (exp == 0)
+        ifTrue: [ 1 ]
+        ifFalse: [ (self even: exp)
+                       ifTrue: [ (self square: (self expmodForBase: base Exp: (exp / 2) M: m)) rem: m ]
+                       ifFalse: [ (base * (self expmodForBase: base Exp: (exp - 1) M: m)) rem: m ]
+        ].
+]
+] "MillerRabin"
+
+| testCase prime |
 
 prime := [ :x | (SmallestDivisor new setN: x; value) == x ].
 
-fast_prime := [ :x | FastPrime new setN: x; value ].
-
-test_case := [ :x | 'n:' display. 
+testCase  := [ :x | 'n:' display. 
                     x display. 
                     '  Prime:' display. 
                     (prime value: x) display.
                     '  Fast Prime:' display. 
-                    (fast_prime value: x) display.
-                    '  Miller-Rabin:' display. 
                     (FastPrime new setN: x; value) display.
+                    '  Miller-Rabin:' display. 
+                    (MillerRabin new setN: x; value) display.
                     '' displayNl. ].
 
-test_case value: 10.
-test_case value: 7.
-test_case value: 11.
-test_case value: 97.
-test_case value: 499.
-test_case value: 561.
-test_case value: 1105.
-test_case value: 1729.
-test_case value: 2465.
-test_case value: 2821.
-test_case value: 6601.
+testCase value: 10.
+testCase value: 7.
+testCase value: 11.
+testCase value: 97.
+testCase value: 499.
+testCase value: 561.
+testCase value: 1105.
+testCase value: 1729.
+testCase value: 2465.
+testCase value: 2821.
+testCase value: 6601.
 
 'done' displayNl.
