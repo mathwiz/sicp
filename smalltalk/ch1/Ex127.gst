@@ -1,9 +1,11 @@
-Object subclass: SmallestDivisor [
+Object subclass: NumberFunction [
 | N |
 setN: aNum [
     N := aNum
 ]
+]
 
+NumberFunction subclass: SmallestDivisor [
 value [
     ^ self class findDivisorForN: N andTest: 2.
 ]
@@ -24,12 +26,7 @@ SmallestDivisor class >> findDivisorForN: n andTest: test [
 ] "end class"
 
 
-Object subclass: FastPrime [
-| N |
-setN: aNum [
-    N := aNum.
-]
-
+NumberFunction subclass: FastPrime [
 value [
     ^self class isPrime: N
 ]
@@ -76,6 +73,8 @@ FastPrime class >> square: n [
 prime := [ :x | (SmallestDivisor new setN: x; value) == x ].
 
 fast_prime := [ :x | FastPrime new setN: x; value ].
+
+carmichael := [ :x | Carmichael new setN: x; value ].
 
 test_case := [ :x | 'n:' display. 
                     x display. 
