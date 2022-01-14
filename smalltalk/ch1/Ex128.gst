@@ -68,11 +68,13 @@ FastPrime subclass: MillerRabin [
 
 MillerRabin class >> fermatTest: n [
     | tryIt |
-    tryIt := [ :a | (self expmodForBase: a Exp: n M: n) == a  ].
+    tryIt := [ :a | (self expmodForBase: a Exp: (n-1) M: n) == 1 ].
     ^ tryIt value: 1 + ((1 to: (n - 1)) atRandom).
 ]
 
 MillerRabin class >> expmodForBase: base Exp: exp M: m [
+    | nontrivialSqrt squaremodWithCheck |
+
     ^ (exp == 0)
         ifTrue: [ 1 ]
         ifFalse: [ (self even: exp)
@@ -86,8 +88,7 @@ MillerRabin class >> expmodForBase: base Exp: exp M: m [
 
 prime := [ :x | (SmallestDivisor new setN: x; value) == x ].
 
-testCase  := [ :x | 'n:' display. 
-                    x display. 
+testCase  := [ :x | ('n:' , x asString) display.
                     '  Prime:' display. 
                     (prime value: x) display.
                     '  Fast Prime:' display. 
