@@ -66,37 +66,11 @@ FastPrime class >> expmodForBase: base Exp: exp M: m [
 ]
 ] "FastPrime"
 
-FastPrime subclass: Carmichael [
-value [
-    | try_it |
-    try_it := [ :a | (self class expmodForBase: a Exp: N M: N) == a  ].
-    ^ (self class isPrime: N)
-        ifTrue:  [ false ]
-        ifFalse: [ self class iterate: (N-1) withBlock: try_it ]
-]
+| test_case prime fast_prime  |
 
-Carmichael class >> isPrime: n [
-    ^ (SmallestDivisor new setN: n; value) == n
-]
-
-Carmichael class >> iterate: n withBlock: aBlock [
-    ^ (n == 0)
-        ifTrue: [ true ]
-        ifFalse: [ (aBlock value: n)
-                       ifTrue:  [ self iterate: (n-1) withBlock: aBlock ]
-                       ifFalse: [ false ]
-                 ]
-]
-] "Carmichael"
-
-
-| test_case prime fast_prime carmichael |
-
-prime := [ :x | Carmichael isPrime: x ].
+prime := [ :x | (SmallestDivisor new setN: x; value) == x ].
 
 fast_prime := [ :x | FastPrime new setN: x; value ].
-
-carmichael := [ :x | Carmichael new setN: x; value ].
 
 test_case := [ :x | 'n:' display. 
                     x display. 
@@ -104,8 +78,8 @@ test_case := [ :x | 'n:' display.
                     (prime value: x) display.
                     '  Fast Prime:' display. 
                     (fast_prime value: x) display.
-                    '  Carmichael:' display. 
-                    (carmichael value: x) display.
+                    '  Miller-Rabin:' display. 
+                    (FastPrime new setN: x; value) display.
                     '' displayNl. ].
 
 test_case value: 10.
