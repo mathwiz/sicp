@@ -88,14 +88,20 @@ MillerRabin class >> expmodForBase: base Exp: exp M: m [
 
 prime := [ :x | (SmallestDivisor new setN: x; value) == x ].
 
-testCase  := [ :x | ('n:' , x asString) display.
-                    '  Prime:' display. 
-                    (prime value: x) display.
-                    '  Fast Prime:' display. 
-                    (FastPrime new setN: x; value) display.
-                    '  Miller-Rabin:' display. 
-                    (MillerRabin new setN: x; value) display.
-                    '' displayNl. ].
+testCase := [ :x | 
+            s := WriteStream on: (String new: 64).
+            s nextPutAll: ('n:', x asString).
+            s tab.
+            s nextPutAll: ' Prime:'.
+            s nextPutAll: (prime value: x) printString.
+            s tab.
+            s nextPutAll: ' Fast Prime:'.
+            s nextPutAll: (FastPrime new setN: x; value) printString.
+            s tab.
+            s nextPutAll: ' Miller-Rabin:'.
+            s nextPutAll: (MillerRabin new setN: x; value) printString.
+            s contents displayNl.
+            ].
 
 testCase value: 10.
 testCase value: 7.
