@@ -3,7 +3,15 @@ Object subclass: NumberFunction [
 setN: aNum [
     N := aNum
 ]
+
+NumberFunction class >> even: n [
+    ^ (n rem: 2) == 0.
 ]
+
+NumberFunction class >> square: n [
+    ^ n * n.
+]
+] "NumberFunction"
 
 NumberFunction subclass: SmallestDivisor [
 value [
@@ -23,7 +31,7 @@ SmallestDivisor class >> findDivisorForN: n andTest: test [
 
     ^ self findDivisorForN: n andTest: test + 1.
 ]
-] "end class"
+] "SmallestDivisor"
 
 
 NumberFunction subclass: FastPrime [
@@ -57,15 +65,7 @@ FastPrime class >> expmodForBase: base Exp: exp M: m [
         ].
 ]
 
-FastPrime class >> even: n [
-    ^ (n rem: 2) == 0.
-]
-
-FastPrime class >> square: n [
-    ^ n * n.
-]
-
-] "end class"
+] "FastPrime"
 
 
 | test_case prime fast_prime carmichael |
