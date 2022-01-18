@@ -75,13 +75,13 @@ miller_rabin_test <- function(n) {
 
 miller_rabin_expmod <- function(base, exp, m) {
   non_trivial_square_root <- function(x, sq) {
-      result = (sq == 1) && (x != 1) && (x != (m-1)) 
+      result = (sq == 1) && (x != 1) && (x != (m-1))
       ifelse(result, 0, sq)
-  }    
+  }
   squaremod_with_check <- function(x) {
       non_trivial_square_root(x, square(x) %% m)
   }
-  
+
   if (exp == 0) {
     1
   } else if (divides(2,exp)) {
