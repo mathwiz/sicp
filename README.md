@@ -24,10 +24,10 @@ Iteration 1
 Iteration 2
 * Common Lisp
 * Haskell
-* Smalltalk
-* Python
-* Perl
 * Julia
+* Perl
+* Python
 * R
 * Ruby
+* Smalltalk
 
