@@ -86,3 +86,8 @@ test_num n =
 test_nums vals = report $ map show (map test_num vals)
 
 report vals = mapM_ putStrLn vals
+
+
+main = do
+  putStrLn "(n,Prime,Fast Prime,Miller Rabin)"
+  test_nums [11,13,127,561,1105,1729,2465,2821,6601,6603]
