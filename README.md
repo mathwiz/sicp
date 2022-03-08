@@ -24,10 +24,10 @@ Iteration 1
 Iteration 2
 * Common Lisp
 * Haskell
+* Javascript
 * Julia
 * Octave
 * Python
 * R
-* Racket
 * Smalltalk
 
