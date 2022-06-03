@@ -6,7 +6,7 @@ public abstract class CachedValue<T> implements Value<T>, Cacheable<T> {
     @Override
     public T value() {
         if (val == null)
-            compute();
+            val = compute();
         return val;
     }
 }
