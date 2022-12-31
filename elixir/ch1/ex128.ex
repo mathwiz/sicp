@@ -86,3 +86,5 @@ defmodule Ex128 do
     number_test(6603)
   end
 end
+
+Ex128.test_cases()
