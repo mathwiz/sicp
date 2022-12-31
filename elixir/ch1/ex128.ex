@@ -1,6 +1,7 @@
 # cd("c:/Users/Yohan/IdeaProjects/sicp/elixir/ch1")
 # Load with import_file("filename")
 # Run with Module.func(args)
+# or $ elixir filename
 defmodule Ex128 do
   @moduledoc false
 
