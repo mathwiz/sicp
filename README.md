@@ -26,7 +26,7 @@ Iteration 2
 * Common Lisp
 * Haskell
 * Java
-* Julia
 * Octave
 * Python
-* Scala
+* R
+* Racket
