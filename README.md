@@ -29,4 +29,4 @@ Iteration 2
 * Octave
 * Python
 * R
-* Racket
+* Scala
