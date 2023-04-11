@@ -23,9 +23,9 @@ Iteration 1
 
 Iteration 2
 * Clojure
-* Common Lisp
 * Haskell
 * Java
+* Lisp
 * Octave
 * Python
 * R
