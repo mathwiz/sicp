@@ -23,10 +23,10 @@ Iteration 1
 
 Iteration 2
 * Clojure
+* Haskell
 * Java
 * Julia
 * Lisp
-* Octave
 * Python
 * R
 * Scala
