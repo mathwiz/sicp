@@ -22,12 +22,12 @@ Iteration 1
 * Smalltalk
 
 Iteration 2
-* Clojure
+* Elixir
+* Erlang
 * Haskell
 * Julia
 * Lisp
+* Octave
 * Python
 * R
-* Racket
-* Scala
 
