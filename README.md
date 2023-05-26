@@ -23,11 +23,11 @@ Iteration 1
 
 Iteration 2
 * Elixir
-* Erlang
 * Haskell
 * Julia
 * Lisp
 * Octave
 * Python
 * R
+* Racket
 
