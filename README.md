@@ -23,8 +23,8 @@ Iteration 1
 
 Iteration 2
 * Clojure
-* Elixir
 * Haskell
+* Java
 * Julia
 * Lisp
 * Python
