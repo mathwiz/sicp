@@ -31,3 +31,9 @@ Iteration 2
 * Racket
 * Scala
 
+Iteration 3
+* Haskell
+* Julia
+* Python
+* Racket
+
