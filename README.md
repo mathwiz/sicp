@@ -24,16 +24,16 @@ Iteration 1
 Iteration 2
 * Clojure
 * Haskell
+* Java
 * Julia
 * Lisp
 * Python
-* R
 * Racket
 * Scala
 
 Iteration 3
 * Haskell
-* Julia
+* Java
 * Python
 * Racket
 
