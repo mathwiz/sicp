@@ -32,7 +32,7 @@ Iteration 2
 * Smalltalk
 
 Iteration 3
-* Erlang
+* Clojure
+* Java
 * Julia
-* Lisp
 * Scala
