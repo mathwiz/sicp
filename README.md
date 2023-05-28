@@ -33,6 +33,6 @@ Iteration 2
 
 Iteration 3
 * Clojure
-* Python
+* Julia
 * Racket
 * Scala
