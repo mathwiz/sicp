@@ -23,16 +23,16 @@ Iteration 1
 
 Iteration 2
 * Clojure
+* Erlang
 * Haskell
 * Java
 * Julia
 * Lisp
-* Python
 * Scala
 * Smalltalk
 
 Iteration 3
-* Clojure
+* Erlang
 * Julia
 * Lisp
 * Scala
