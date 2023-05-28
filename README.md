@@ -34,6 +34,6 @@ Iteration 2
 
 Iteration 3
 * Clojure
+* Java
 * Julia
-* Python
 * Scala
