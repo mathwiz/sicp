@@ -32,8 +32,7 @@ Iteration 2
 * Scala
 
 Iteration 3
-* Haskell
-* Java
+* Clojure
 * Python
 * Racket
-
+* Scala
