@@ -31,7 +31,6 @@ Iteration 2
 * Scala
 * Smalltalk
 
-
 Iteration 3
 * Clojure
 * Java
