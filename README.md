@@ -26,13 +26,13 @@ Iteration 2
 * Erlang
 * Haskell
 * Java
-* Julia
 * Lisp
+* Python
 * Scala
 * Smalltalk
 
 Iteration 3
 * Clojure
 * Java
-* Julia
+* Python
 * Scala
