@@ -24,10 +24,9 @@ Iteration 1
 Iteration 2
 * Clojure
 * Haskell
-* Java
-* Julia
 * Lisp
 * Python
+* R
 * Scala
 * Smalltalk
 
