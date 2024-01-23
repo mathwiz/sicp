@@ -24,12 +24,12 @@ Iteration 1
 Iteration 2
 * Clojure
 * Haskell
+* Java
 * Lisp
 * Octave
 * Python
 * R
 * Scala
-* Smalltalk
 
 Iteration 3
 * Clojure
