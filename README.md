@@ -25,6 +25,7 @@ Iteration 2
 * Clojure
 * Haskell
 * Lisp
+* Octave
 * Python
 * R
 * Scala
