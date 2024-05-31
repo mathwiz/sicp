@@ -33,8 +33,8 @@ Iteration 2
 
 Iteration 3
 * Clojure
+* Haskell
 * Java
-* Lisp
 * Scala
 
 Iteration 4
