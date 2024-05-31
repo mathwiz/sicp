@@ -25,11 +25,11 @@ Iteration 2
 * Clojure
 * Haskell
 * Java
+* Julia
 * Lisp
-* Octave (Julia?)
+* Octave
 * R
 * Scala
-* Smalltalk
 
 Iteration 3
 * Clojure
