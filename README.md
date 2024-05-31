@@ -27,14 +27,14 @@ Iteration 2
 * Java
 * Lisp
 * Octave (Julia?)
-* Python
 * R
 * Scala
+* Smalltalk
 
 Iteration 3
 * Clojure
 * Java
-* Python
+* Lisp
 * Scala
 
 Iteration 4
