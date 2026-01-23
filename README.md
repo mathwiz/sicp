@@ -27,7 +27,7 @@ Iteration 2
 * Java
 * Julia
 * Lisp
-* Octave
+* Python
 * R
 * Scala
 
