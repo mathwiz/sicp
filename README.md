@@ -42,4 +42,4 @@ Iteration 4
 * Python
 
 Iteration 5
-* Clojure
+* Lisp
