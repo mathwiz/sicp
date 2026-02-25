@@ -25,21 +25,21 @@ Iteration 2
 * Clojure
 * Haskell
 * Java
-* Julia
+* Javascript
 * Lisp
 * Python
 * R
 * Scala
 
 Iteration 3
-* Clojure
-* Haskell
-* Java
+* Lisp
+* Python
+* R
 * Scala
 
 Iteration 4
-* Clojure
-* Scala
+* Lisp
+* Python
 
 Iteration 5
 * Clojure
